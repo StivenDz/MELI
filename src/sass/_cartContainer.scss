@@ -1,0 +1,12 @@
+.cartContainer{
+    position: absolute;
+    height: calc(100vh - 100px);
+    width: 100vw;
+    top: 100px;
+    background: #7e7e7e33;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}

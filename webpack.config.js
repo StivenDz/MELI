@@ -21,11 +21,17 @@ module.exports = {
 			'@styles': path.join(__dirname, 'src/styles/'),
 			'@icons': path.join(__dirname, 'src/assets/icons/'),
 			'@logos': path.join(__dirname, 'src/assets/logos/'),
+			'@hooks': path.join(__dirname, 'src/hooks/'),
         }
     },
 
     module:{
         rules:[
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -66,6 +72,10 @@ module.exports = {
             },
             {
                 test: /\.(png)$/,
+                type: 'asset'
+            },
+            {
+                test: /\.(webp)$/,
                 type: 'asset'
             },
             {

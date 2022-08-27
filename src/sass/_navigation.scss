@@ -1,0 +1,121 @@
+.navigation{
+    height: 100px;
+    width: 100%;
+    background: $headerBackground;
+    display: flex;
+    align-items: center;
+    padding:0 74px 0;
+    //all sections have this style
+    & section{
+        display: flex;
+        flex-direction: column;
+    }
+    //first section - logo & country
+    & > section:nth-child(1){
+        & > img{
+            height: 34px;
+            width: 134px;
+            margin-bottom: 6px;
+        }
+        & > section{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            & > svg{
+                font-size: 23px;
+            }
+            & > div{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 15px;
+                & > p:first-child{
+                    font-size: 12px;
+                    margin-bottom: -6px;
+                }
+                & > p:nth-child(2){
+                    font-size: 14px;
+                }
+            }
+        }
+    } 
+    //second section - searcher & links
+    & > section:nth-child(2){
+        margin: 0 50px 0;
+        width: 60vw;
+        & > div:nth-child(1){
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 50%;
+            margin-bottom: 20px;
+            & > input{
+                width: 100%;
+                border: none;
+                outline: none;
+                height: 37px;
+                border-radius: 2px;
+                box-shadow: 0 1px 2px 0 #00000033;
+                padding-left: 7px;
+                padding-top: 9px;
+            }
+            & hr{
+                position: absolute;
+                z-index: 20;
+                width: 20px;
+                background: rgb(48, 48, 48);
+                height: .5px;
+                border: none;
+                right: 30px;
+                top: 47%;
+                transform: translate(-50%) rotate(90deg);
+            }
+            & svg{
+                position: absolute;
+                z-index: 20;
+                right: 11px;
+                top: 28%;
+                transform: translate(-50%) rotate(90deg);
+                cursor: pointer;
+            }
+        }
+        & > div:nth-child(2){
+            display: flex;
+            gap: 15px;
+            & > a{
+                text-decoration: none;
+                font-size: 13px;
+                color: rgb(109, 109, 109);
+                &:hover{
+                    color: rgb(0, 0, 0);
+                }
+            }
+        }
+    }
+    //hird section - adds & cart
+    & > section:last-child{
+        & > img{
+            width: 27vw;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        & > div{
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            & > a{
+                text-decoration: none;
+                font-size: 13px;
+                color: rgb(109, 109, 109);
+
+                &:hover{
+                    color: rgb(0, 0, 0);
+                }
+            }
+
+            & svg{
+                cursor: pointer;
+            }
+        }
+    }
+}
