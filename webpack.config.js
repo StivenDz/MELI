@@ -10,7 +10,8 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/'
     },
-    mode:'development',
+    // mode:'development',
+    mode:'production',
     resolve:{
         extensions: ['.js', '.jsx'],
         alias:{
