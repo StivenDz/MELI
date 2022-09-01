@@ -12,11 +12,14 @@
 *::-webkit-scrollbar {
     display: none;
 }
+img::selection,i::selection,svg::selection{
+    background: none;
+}
 
 button,a{
     cursor: pointer !important;
 }
 
 body{
-    background: rgb(255, 255, 255);
+    background: #ebebeb;
 }

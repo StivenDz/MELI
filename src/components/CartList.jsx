@@ -1,6 +1,7 @@
 import React from 'react';
 import CartItem from '@components/CartItem';
 import { motion } from 'framer-motion';
+import AppContext from '@context/AppContext';
 
 /**
  * 
@@ -8,7 +9,8 @@ import { motion } from 'framer-motion';
  * @param {boolean} showOrHideList 
  * @returns {JSX.Element}
  */
-const CartList = ({listItems,showOrHideList}) => {
+const CartList = ({showOrHideList}) => {
+    const {state} = React.useContext(AppContext);
     return ( 
         <motion.aside 
             className='cartList'
@@ -17,9 +19,15 @@ const CartList = ({listItems,showOrHideList}) => {
             transition={{duration:.7}}
             >
 
-            {listItems.map((product) => (
+            {state.cart.length > 0 ? state.cart.map((product) => (
                 <CartItem item={product} key={product.id} />  
-            ))}
+            ))
+                :
+                <div className="vacio">
+                    <h2>Tu carrito está vacío</h2>
+                    <p>¿No sabes qué comprar? ¡Miles de productos te esperan!</p>
+                </div>
+            }
         </motion.aside>
      );
 }

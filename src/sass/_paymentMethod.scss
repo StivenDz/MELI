@@ -1,0 +1,33 @@
+.paymentMethodContainer{
+    padding: 40px 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    
+    .paymentMehotdItem{
+        display: flex;
+        // width: 100%;
+        flex-grow: 1;
+        padding: 20px;
+        gap: 20px;
+        background: #fff;
+        border-right: 1px solid rgba(53, 53, 53, 0.068);
+        &:nth-child(2){
+            flex-grow: 1.5;
+        }
+        p{
+            font-size: 15px;
+        }
+        a{
+            font-size: 13px;
+            text-decoration: none;
+            color: $blueStandar;
+
+            &:hover{
+                color:$blueDark;
+            }
+        }
+    }
+    
+}

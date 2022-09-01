@@ -6,4 +6,21 @@
     right: 0;
     background: #fff;
     overflow-y: scroll;
+    & > .vacio {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        padding: 0 15px;
+        h2{
+            text-align: center;
+            font-weight: 400;
+        }
+        p{
+            text-align: center;
+        }
+    }
 }

@@ -8,18 +8,22 @@ import { motion } from 'framer-motion';
  * @param {boolean} showOrHideContainer 
  * @returns {JSX.Element}
  */
-const CartContainer = ({products,showOrHideContainer}) => {
+const CartContainer = ({showOrHideContainer}) => {
     return ( 
         <motion.section
             className='cartContainer'
-            animate={{opacity : showOrHideContainer ? 1 : 0}}
+            animate={{
+                opacity : showOrHideContainer ? 1 : 0,
+                pointerEvents: showOrHideContainer ? 'all' : 'none'
+            
+            }}
             transition={{delay : !showOrHideContainer && 1, duration : 1}}
          >
             
             {showOrHideContainer ? 
-            <CartList listItems={products} showOrHideList={showOrHideContainer}/> 
+            <CartList showOrHideList={showOrHideContainer}/> 
              : 
-             <CartList listItems={products} showOrHideList={showOrHideContainer}/>
+             <CartList showOrHideList={showOrHideContainer}/>
             }
         </motion.section>
      );

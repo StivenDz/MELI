@@ -22,6 +22,7 @@ module.exports = {
 			'@icons': path.join(__dirname, 'src/assets/icons/'),
 			'@logos': path.join(__dirname, 'src/assets/logos/'),
 			'@hooks': path.join(__dirname, 'src/hooks/'),
+			'@context': path.join(__dirname, 'src/context/'),
         }
     },
 
