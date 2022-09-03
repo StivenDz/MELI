@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon -e jsx -x \"webpack serve\"",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && serve dist",
     "build-sass": "node-sass --include-path scss src/sass/index.scss src/styles/index.css",
     "watch-sass": "nodemon -e scss -x \"npm run build-sass\" "
   },
