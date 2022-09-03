@@ -15,15 +15,15 @@ module.exports = {
     resolve:{
         extensions: ['.js', '.jsx'],
         alias:{
-            '@components': path.join(__dirname, 'src/components/'),
-			'@containers': path.join(__dirname, 'src/containers/'),
-			'@pages': path.join(__dirname, 'src/pages/'),
-			'@routes': path.join(__dirname, 'src/routes/'),
-			'@styles': path.join(__dirname, 'src/styles/'),
-			'@icons': path.join(__dirname, 'src/assets/icons/'),
-			'@logos': path.join(__dirname, 'src/assets/logos/'),
-			'@hooks': path.join(__dirname, 'src/hooks/'),
-			'@context': path.join(__dirname, 'src/context/'),
+            '@components': path.join(__dirname, '/src/components/'),
+			'@containers': path.join(__dirname, '/src/containers/'),
+			'@pages': path.join(__dirname, '/src/pages/'),
+			'@routes': path.join(__dirname, '/src/routes/'),
+			'@styles': path.join(__dirname, '/src/styles/'),
+			'@icons': path.join(__dirname, '/src/assets/icons/'),
+			'@logos': path.join(__dirname, '/src/assets/logos/'),
+			'@hooks': path.join(__dirname, '/src/hooks/'),
+			'@context': path.join(__dirname, '/src/context/'),
         }
     },
 
