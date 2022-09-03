@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from '@containers/navigation';
+import Navigation from '@containers/Navigation';
 import {Carousel} from '@containers/Carousel';
 import ProductList from '@containers/ProductList';
 import PaymentMethodContainer from '@containers/PaymentMethodContainer';
