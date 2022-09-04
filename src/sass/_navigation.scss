@@ -1,5 +1,4 @@
 // mobile nav 976px
-
 .navigation{
     position: sticky;
     z-index: 999;
@@ -10,7 +9,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     @media screen and (max-width: 1193px){
         &{
             justify-content: space-between;

@@ -150,6 +150,96 @@ body {
         background: #3483fa;
         z-index: -1; }
 
+.navigationResponsive {
+  background: #fff159;
+  height: 87px;
+  position: sticky;
+  z-index: 999;
+  top: 0; }
+  .navigationResponsive hr {
+    background: #85858556;
+    height: 1px;
+    border: none;
+    outline: none;
+    display: block;
+    margin-top: 10px; }
+  .navigationResponsive > div {
+    display: flex;
+    width: 100%;
+    padding: 7px 7px 0;
+    justify-content: space-between; }
+    @media screen and (max-width: 750px) {
+      .navigationResponsive > div {
+        justify-content: center;
+        gap: 7px; } }
+    .navigationResponsive > div img {
+      width: 44px;
+      height: 32px; }
+    .navigationResponsive > div .inputSection {
+      position: relative;
+      width: 85%; }
+      @media screen and (max-width: 750px) {
+        .navigationResponsive > div .inputSection {
+          width: 83%; } }
+      .navigationResponsive > div .inputSection > input {
+        width: 100%;
+        border: none;
+        outline: none;
+        height: 32px;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px 0 #00000033;
+        padding-left: 30px;
+        padding-top: 2px;
+        font-size: 15px;
+        color: black; }
+        .navigationResponsive > div .inputSection > input::placeholder {
+          color: #b6b6b6; }
+      .navigationResponsive > div .inputSection svg {
+        position: absolute;
+        z-index: 20;
+        left: 15px;
+        top: 25%;
+        font-size: 14px;
+        transform: translate(-50%);
+        cursor: pointer;
+        color: #b6b6b6; }
+    .navigationResponsive > div .icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 7%;
+      gap: 2px;
+      color: #303030; }
+      @media screen and (max-width: 750px) {
+        .navigationResponsive > div .icons {
+          width: 10%;
+          max-width: 60px;
+          min-width: 50px; } }
+      .navigationResponsive > div .icons svg {
+        font-size: 20px; }
+      .navigationResponsive > div .icons .closeNav {
+        font-size: 20px; }
+  .navigationResponsive > .shipments {
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 9px; }
+    .navigationResponsive > .shipments > div {
+      align-items: center;
+      display: flex;
+      text-align: center;
+      gap: 7px;
+      padding: 7px 0 0 7px;
+      font-size: 12px; }
+      .navigationResponsive > .shipments > div svg {
+        font-size: 15px; }
+      .navigationResponsive > .shipments > div p {
+        padding-top: 5px; }
+    .navigationResponsive > .shipments > svg {
+      font-size: 13px;
+      color: #858585b7; }
+
 .categories {
   position: fixed;
   z-index: 999;
@@ -304,6 +394,12 @@ body {
   align-items: center;
   justify-content: center;
   width: 100vw; }
+  @media screen and (max-width: 1186px) {
+    .paymentMethodContainer {
+      padding: 40px 1vw; } }
+  @media screen and (max-width: 578px) {
+    .paymentMethodContainer {
+      flex-direction: column; } }
   .paymentMethodContainer .paymentMehotdItem {
     display: flex;
     flex-grow: 1;
@@ -311,8 +407,28 @@ body {
     gap: 20px;
     background: #fff;
     border-right: 1px solid rgba(53, 53, 53, 0.068); }
+    @media screen and (max-width: 851px) {
+      .paymentMethodContainer .paymentMehotdItem {
+        justify-content: center; } }
+    @media screen and (max-width: 578px) {
+      .paymentMethodContainer .paymentMehotdItem {
+        width: 95%;
+        justify-content: flex-start;
+        padding-left: 55px; } }
+    @media screen and (max-width: 406px) {
+      .paymentMethodContainer .paymentMehotdItem {
+        padding-left: 0px; } }
     .paymentMethodContainer .paymentMehotdItem:nth-child(2) {
       flex-grow: 1.5; }
+    @media screen and (max-width: 1186px) {
+      .paymentMethodContainer .paymentMehotdItem:nth-child(3) {
+        display: none; } }
+    @media screen and (max-width: 578px) {
+      .paymentMethodContainer .paymentMehotdItem:nth-child(3) {
+        display: flex; } }
+    @media screen and (max-width: 851px) {
+      .paymentMethodContainer .paymentMehotdItem:nth-child(4) {
+        display: none; } }
     .paymentMethodContainer .paymentMehotdItem p {
       font-size: 15px; }
     .paymentMethodContainer .paymentMehotdItem a {
@@ -394,10 +510,24 @@ body {
         display: flex;
         flex-direction: column;
         gap: 15px; }
+        @media screen and (max-width: 730px) {
+          .productList > div > .productItem > .content p {
+            max-height: 50px;
+            overflow: hidden; } }
+        @media screen and (max-width: 600px) {
+          .productList > div > .productItem > .content p {
+            font-size: 13px;
+            max-height: 62px; } }
         .productList > div > .productItem > .content span {
           font-size: 25px;
           font-weight: 500; }
-        .productList > div > .productItem > .content .addToCart {
+          @media screen and (max-width: 600px) {
+            .productList > div > .productItem > .content span {
+              font-size: 20px; } }
+          @media screen and (max-width: 400px) {
+            .productList > div > .productItem > .content span {
+              font-size: 18px; } }
+        .productList > div > .productItem > .content .addToCart, .productList > div > .productItem > .content .removeFromCart {
           width: 200px;
           padding: 10px 0;
           border: none;
@@ -405,11 +535,14 @@ body {
           border-radius: 4px;
           color: #3483fa;
           background: rgba(65, 137, 230, 0.15); }
+          @media screen and (max-width: 600px) {
+            .productList > div > .productItem > .content .addToCart, .productList > div > .productItem > .content .removeFromCart {
+              font-size: 13px;
+              width: 150px; } }
+          @media screen and (max-width: 310px) {
+            .productList > div > .productItem > .content .addToCart, .productList > div > .productItem > .content .removeFromCart {
+              font-size: 11px;
+              width: 120px; } }
         .productList > div > .productItem > .content .removeFromCart {
-          width: 200px;
-          padding: 10px 0;
-          border: none;
-          outline: none;
-          border-radius: 4px;
           color: #c31212;
           background: rgba(230, 65, 65, 0.15); }

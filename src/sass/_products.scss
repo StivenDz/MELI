@@ -4,6 +4,8 @@
     flex-direction: column;
     width: 100vw;
     position: relative;
+
+    //clicked productitem
     .product{
         top: 100px !important;
         width: 100vw;
@@ -40,6 +42,7 @@
             opacity: 1 !important;
         }
     }
+
     & > div {
         padding: 0 5vw;
         position: relative;
@@ -83,11 +86,28 @@
                 display: flex;
                 flex-direction: column;
                 gap: 15px;
+                p{
+                    @media screen and (max-width:730px){
+                       max-height: 50px;
+                       overflow: hidden;
+                    }
+                    @media screen and (max-width:600px){
+                        font-size: 13px;
+                        max-height: 62px;
+                    }
+
+                }
                 & span{
                     font-size: 25px;
                     font-weight: 500;
+                    @media screen and (max-width:600px){
+                        font-size: 20px;
+                    }
+                    @media screen and (max-width:400px){
+                        font-size: 18px;
+                    }
                 }
-                .addToCart{
+                .addToCart,.removeFromCart{
                     width: 200px;
                     padding: 10px 0;
                     border: none;
@@ -95,13 +115,16 @@
                     border-radius: 4px;
                     color: $blueStandar;
                     background: $blueLigth;
+                    @media screen and (max-width:600px){
+                        font-size: 13px;
+                        width: 150px;
+                    }
+                    @media screen and (max-width:310px){
+                        font-size: 11px;
+                        width: 120px;
+                    }
                 }
                 .removeFromCart{
-                    width: 200px;
-                    padding: 10px 0;
-                    border: none;
-                    outline: none;
-                    border-radius: 4px;
                     color: $redDark;
                     background: $redLigth;
                 }

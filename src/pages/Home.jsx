@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '@containers/Navigation';
+import NavigationResponsive from '@containers/NavigationResponsive';
 import {Carousel} from '@containers/Carousel';
 import ProductList from '@containers/ProductList';
 import PaymentMethodContainer from '@containers/PaymentMethodContainer';
@@ -8,8 +9,11 @@ import PaymentMethodContainer from '@containers/PaymentMethodContainer';
 const Home =  () => {
     return ( 
         <>
-            
-            <Navigation/>
+            {window.innerWidth > 976 ?
+                <Navigation/> 
+                : 
+                <NavigationResponsive/>
+            }
             <main>
                 <Carousel/>
                 <PaymentMethodContainer/>
