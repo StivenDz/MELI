@@ -18,7 +18,6 @@ const ProductList = ({category}) => {
         productItem:null
     });
 
-
     React.useEffect(() => {
         axios.get(API)
             .then(res => setProducts(res.data.results))

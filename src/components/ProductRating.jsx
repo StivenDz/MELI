@@ -89,7 +89,7 @@ const ProductRating = ({id}) => {
                             <FontAwesomeIcon icon="fa-regular fa-star" />
                         </>
                     
-                    : console.log('loading')
+                    : <></>
                 }
             </div>
             <span>{rating && rating.reviews?.length > 0 ? rating.reviews.length : 0} opiniones</span>

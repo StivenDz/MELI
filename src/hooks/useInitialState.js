@@ -1,7 +1,9 @@
 import React from 'react';
 
+const Cart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [];
+
 const initialState = {
-    cart:[],
+    cart: Cart,
     favorites: []
 }
 
@@ -12,7 +14,8 @@ const useInitialState = () =>{
         setState({
             ...state,
             cart:!((state.cart).includes(product)) ? 
-            [...state.cart, product] : [...state.cart]
+            (localStorage.setItem('cart',JSON.stringify([...state.cart,product])),
+            [...state.cart, product]) : [...state.cart]
         })
     }
     const removeFromCart = (product) =>{
@@ -20,6 +23,7 @@ const useInitialState = () =>{
             ...state,
             cart: state.cart.filter(prod => prod.id != product.id)
         })
+        localStorage.setItem('cart',JSON.stringify(state.cart.filter(prod => prod.id != product.id)));
     }
 
     return {

@@ -7,6 +7,7 @@ import PaymentMethodContainer from '@containers/PaymentMethodContainer';
 
 
 const Home =  () => {
+    document.title = "Mercado Libre";
     return ( 
         <>
             {window.innerWidth > 976 ?

@@ -739,3 +739,51 @@ body {
     border-radius: 8px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 25px 16px; }
+
+.notFoundNav {
+  height: 54px;
+  background: #fff159;
+  padding: 0 0 0 80px;
+  display: flex;
+  border-bottom: 1px solid #d9d9d9; }
+  @media screen and (max-width: 400px) {
+    .notFoundNav {
+      padding-left: 5px; } }
+  .notFoundNav a {
+    height: 100%;
+    display: flex;
+    align-items: center; }
+    .notFoundNav a img {
+      height: 40px;
+      width: 159px;
+      position: relative; }
+
+.notFoundMain {
+  height: calc(100vh - 54px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff; }
+  .notFoundMain h4 {
+    margin-top: 1.6em;
+    color: #333;
+    font-size: 20px;
+    text-align: center;
+    padding: 0 15px;
+    line-height: 1; }
+    @media screen and (max-width: 360px) {
+      .notFoundMain h4 {
+        font-size: 15px; } }
+  .notFoundMain a {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 35px;
+    padding: 0 30px;
+    line-height: 1;
+    text-align: center; }
+    @media screen and (max-width: 360px) {
+      .notFoundMain a {
+        font-size: 12px; } }

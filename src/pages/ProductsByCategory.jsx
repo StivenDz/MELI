@@ -4,7 +4,7 @@ import NavigationResponsive from '@containers/NavigationResponsive';
 import ProductList from '@containers/ProductList';
 import { useParams } from 'react-router';
 
-const Category = () => {
+const ProductsByCategory = () => {
     let {categoryId,categoryName} = useParams();
     document.title = categoryName + " | Mercado Libre";
     return ( 
@@ -21,4 +21,4 @@ const Category = () => {
      );
 }
  
-export default Category;
+export default ProductsByCategory;

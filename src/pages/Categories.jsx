@@ -3,6 +3,9 @@ import Navigation from '@containers/Navigation';
 import NavigationResponsive from '@containers/NavigationResponsive';
 
 const Categories = () => {
+    window.scrollTo({
+        top:0
+    })
     return (
         <>
             {window.innerWidth > 976 ?

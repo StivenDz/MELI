@@ -20,8 +20,18 @@ button,a{
     cursor: pointer !important;
 }
 // #1d2226
+// background: #353535;
+// background: #151515;
 body{
-    // background: #353535;
     background: #ebebeb;
-    // background: #151515;
+}
+
+@mixin responsive($width,$properties,$values) {
+    $i : 1;
+    @media screen and (max-width:$width){
+        @each $property in $properties {
+            #{$property}:  nth($values,$i);
+            $i : ($i + 1);
+        }
+    }
 }

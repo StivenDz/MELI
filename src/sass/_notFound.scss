@@ -1,0 +1,61 @@
+.notFoundNav {
+    height: 54px;
+    background: $headerBackground;
+    padding: 0 0 0 80px;
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+        @include responsive(
+            400px,
+            $properties:(padding-left),
+            $values:(5px)
+        );
+    a{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        img {
+            height: 40px;
+            width: 159px;
+            position: relative;
+        }
+    }
+}
+
+.notFoundMain {
+    height: calc(100vh - 54px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    h4 {
+        margin-top: 1.6em;
+        color: #333;
+        font-size: 20px;
+        text-align: center;
+        padding: 0 15px;
+        line-height: 1;
+        @include responsive(
+            360px,
+            $properties:(font-size),
+            $values:(15px)
+        );
+    }
+
+    a {
+        display: block;
+        color: #666;
+        font-size: 14px;
+        text-decoration: none;
+        margin-top: 35px;
+        padding: 0 30px;
+        line-height: 1;
+        text-align: center;
+
+        @include responsive(
+            360px,
+            $properties:(font-size),
+            $values:(12px)
+        );
+    }
+}
