@@ -20,7 +20,7 @@ const App = () =>{
                     <Route exact path="/categories" element={<Categories/>} />
                     <Route exact path="/category=:categoryName/:categoryId" element={<ProductsByCategory/>} />
                     <Route exact path="/product=:productName/:productId" element={<ProductDetail/>} />
-                    <Route path='*' element={<NotFound/>} />
+                    <Route exact path='*' element={<NotFound/>} />
                 </Routes>
             </BrowserRouter>
         </AppContext.Provider>
