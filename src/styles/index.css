@@ -251,15 +251,19 @@ body {
   pointer-events: none; }
   .categoriesContainer > div {
     width: max-content;
-    overflow: visible; }
+    overflow: visible;
+    position: absolute;
+    z-index: 999;
+    left: 200px; }
     .categoriesContainer > div .bar {
       height: 25px;
       top: -17px;
       position: absolute;
-      width: 100%; }
+      width: 100%;
+      left: 5px; }
     .categoriesContainer > div .triangle {
       position: absolute !important;
-      left: 22%;
+      right: 30%;
       top: -17px;
       font-size: 25px !important;
       transform: rotate(-90deg);
@@ -273,7 +277,7 @@ body {
       display: flex;
       flex-direction: column;
       gap: 7px;
-      left: 75%;
+      left: 5%;
       overflow-y: scroll;
       position: relative;
       height: calc(100vh - 100px); }
@@ -585,44 +589,48 @@ body {
         display: flex;
         flex-direction: column;
         gap: 15px; }
-        @media screen and (max-width: 730px) {
-          .productList > div > .productItem > .content p {
-            max-height: 50px;
-            overflow: hidden; } }
-        @media screen and (max-width: 600px) {
-          .productList > div > .productItem > .content p {
-            font-size: 13px;
-            max-height: 62px; } }
-        .productList > div > .productItem > .content > div {
+        .productList > div > .productItem > .content a {
+          display: block;
+          text-decoration: none;
+          color: black; }
+          @media screen and (max-width: 730px) {
+            .productList > div > .productItem > .content a p {
+              max-height: 50px;
+              overflow: hidden; } }
+          @media screen and (max-width: 600px) {
+            .productList > div > .productItem > .content a p {
+              font-size: 13px;
+              max-height: 62px; } }
+        .productList > div > .productItem > .content a > div {
           display: flex;
           width: 400px;
           align-items: center;
           justify-content: space-between; }
           @media screen and (max-width: 760px) {
-            .productList > div > .productItem > .content > div {
+            .productList > div > .productItem > .content a > div {
               flex-direction: column-reverse;
               align-items: flex-start;
               gap: 5px;
               width: 100%; } }
-          .productList > div > .productItem > .content > div > span {
+          .productList > div > .productItem > .content a > div > span {
             font-size: 25px;
             font-weight: 500; }
             @media screen and (max-width: 600px) {
-              .productList > div > .productItem > .content > div > span {
+              .productList > div > .productItem > .content a > div > span {
                 font-size: 20px; } }
             @media screen and (max-width: 400px) {
-              .productList > div > .productItem > .content > div > span {
+              .productList > div > .productItem > .content a > div > span {
                 font-size: 18px; } }
-          .productList > div > .productItem > .content > div > .ratingContainer {
+          .productList > div > .productItem > .content a > div > .ratingContainer {
             display: flex;
             align-items: center;
             gap: 15px; }
-            .productList > div > .productItem > .content > div > .ratingContainer .stars {
+            .productList > div > .productItem > .content a > div > .ratingContainer .stars {
               color: #3483fa;
               display: flex;
               gap: 3px;
               font-size: 13px; }
-            .productList > div > .productItem > .content > div > .ratingContainer span {
+            .productList > div > .productItem > .content a > div > .ratingContainer span {
               display: none; }
         .productList > div > .productItem > .content .addToCart, .productList > div > .productItem > .content .removeFromCart {
           width: 200px;

@@ -7,7 +7,6 @@ import { useParams } from 'react-router';
 const Category = () => {
     let {categoryId,categoryName} = useParams();
     document.title = categoryName + " | Mercado Libre";
-    console.log(document.title);
     return ( 
         <>
             {window.innerWidth > 976 ?

@@ -18,6 +18,7 @@ const ProductItem = ({props}) => {
             setIsFavorite("fa-regular fa-heart");
         }
     }
+    const productUrl = `/product=${(props.title).replace(/[^a-zA-Z0-9 ]/g, "")}/${props.id}`;
     return ( 
         <motion.div className='productItem'>
             
@@ -26,15 +27,19 @@ const ProductItem = ({props}) => {
                 icon={isFavorite}
                 onClick={()=> isFavoriteFunction()}
              />
-            <Link to={`/product=${props.title}/${props.id}`}>
+            <Link to={productUrl}>
                 <motion.img src={(props.thumbnail).replace('I.jpg','F.jpg')} alt="" />
             </Link>
             <motion.div className='content'>
-                <motion.p>{props.title}</motion.p>
-                <div>
-                    <motion.span>$ {usePriceFormat(props.price)}</motion.span>
-                    <ProductRating id={props.id}/>
-                </div>
+                <Link to={productUrl}>
+                    <motion.p>{props.title}</motion.p>
+                </Link>
+                <Link to={productUrl}>
+                    <div>
+                        <motion.span>$ {usePriceFormat(props.price)}</motion.span>
+                        <ProductRating id={props.id}/>
+                    </div>
+                </Link>
 
                 {!((state.cart).includes(props)) ? 
                     <button 

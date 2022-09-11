@@ -10,15 +10,19 @@
     & > div{
         width: max-content;
         overflow: visible;
+        position: absolute;
+        z-index: 999;
+        left: 200px;
         .bar{
             height: 25px;
             top: -17px;
             position: absolute;
             width: 100%;
+            left: 5px;
         }
         .triangle{
             position: absolute !important;
-            left: 22%;
+            right: 30%;
             top: -17px;
             font-size: 25px !important;
             transform: rotate(-90deg);
@@ -33,7 +37,7 @@
             display: flex;
             flex-direction: column;
             gap: 7px;
-            left: 75%;
+            left: 5%;
             overflow-y: scroll;
             position: relative;
             height: calc(100vh - 100px);;
