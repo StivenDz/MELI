@@ -11,7 +11,8 @@ const useInitialState = () =>{
     const addToCart = (product) =>{
         setState({
             ...state,
-            cart:!((state.cart).includes(product)) ? [...state.cart, product] : [...state.cart]
+            cart:!((state.cart).includes(product)) ? 
+            [...state.cart, product] : [...state.cart]
         })
     }
     const removeFromCart = (product) =>{

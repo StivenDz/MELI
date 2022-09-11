@@ -1,14 +1,18 @@
 import React from 'react';
 import axios from 'axios';
+
 import ProductItem from '@components/Productitem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { useParams } from 'react-router';
+import Loading from '@components/Loading';
 
-const idCol = 'MCO';
-const API = `https://api.mercadolibre.com/sites/${idCol}/search?category=MCO1648`;
-const ProductList = () => {
-    const [products, setProducts] = React.useState([]);
+
+const ProductList = ({category}) => {
+    const idCol = 'MCO';
+    const comp = "MCO1648";
+    const API = `https://api.mercadolibre.com/sites/${idCol}/search?category=${category || comp}`;
+
+    const [products, setProducts] = React.useState(null);
     const [selectedId, setSelectedId] = React.useState({
         id:null,
         productItem:null
@@ -19,11 +23,12 @@ const ProductList = () => {
         axios.get(API)
             .then(res => setProducts(res.data.results))
             .catch(err => console.log(err.status));
-    }, []);
+    }, [category]);
 
-    return (
+    
+        return (
         <article className='productList'>
-            {products.length > 0 ?
+            {products ?
                 products.map(product => (
                     <motion.div 
                         key={product.id}
@@ -42,7 +47,7 @@ const ProductList = () => {
                     
                 ))
                 :
-                console.log('loading')
+                <Loading/>
             }
             <AnimatePresence>
                 {selectedId.id != null && (
@@ -70,6 +75,7 @@ const ProductList = () => {
             </AnimatePresence>
         </article>
     );
+    
 }
 
 export default ProductList;

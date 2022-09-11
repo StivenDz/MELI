@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 
 import logo from '@logos/nav_logo.png';
 import add from '@logos/nav_ads.webp';
@@ -16,7 +17,9 @@ const Navigation = () => {
         <>
             <header className="navigation">
                 <section>
-                    <img src={logo} alt="Logo de Mercado Libre" />
+                    <Link to="/" >
+                        <img src={logo} alt="Logo de Mercado Libre" />
+                    </Link>
                     <section>
                         <FontAwesomeIcon icon="fa-solid fa-location-dot" />
                         <div>
@@ -36,23 +39,23 @@ const Navigation = () => {
                             onMouseOver={()=> setShowCategories(true)}
                             onMouseLeave={()=> setShowCategories(false)}
                         >
-                            <a href="" >Categorias</a>
+                            <Link to="/categories" >Categorias</Link>
                             <FontAwesomeIcon className="moreThanReverse" icon="fa-solid fa-angle-right"/>
                         </section>
-                        <a href="">Ofertas</a>
-                        <a href="">Historial</a>
-                        <a href="">Supermercado</a>
-                        <a href="">Moda</a>
-                        <a href="">Vender</a>
-                        <a href="">Ayuda / PQR</a>
+                        <Link to="#">Ofertas</Link>
+                        <Link to="#">Historial</Link>
+                        <Link to="#">Supermercado</Link>
+                        <Link to="#">Moda</Link>
+                        <Link to="#">Vender</Link>
+                        <Link to="#">Ayuda / PQR</Link>
                     </div>
                 </section>
                 <section>
                     <img src={add} alt="" title="COMBO LOYALTV L6" />
                     <div>
-                        <a href="">Crear tu cuenta</a>
-                        <a href="">Ingresa</a>
-                        <a href="">Mis compras</a>
+                        <Link to="#">Crear tu cuenta</Link>
+                        <Link to="#">Ingresa</Link>
+                        <Link to="#">Mis compras</Link>
                         <div className="cart">
                             {state.cart.length > 0 && <span>{state.cart.length}</span>}   
                             <FontAwesomeIcon icon="fa-solid fa-cart-shopping" onClick={()=>{setShowCart(!showCart)}} />

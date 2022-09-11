@@ -1,13 +1,21 @@
 @import './vars';
 @import './global';
+
 @import './navigation';
 @import './navigationResponsive';
-@import './categories';
+@import './categoriesNavigation';
+
 @import './cartItem';
 @import './cartList';
 @import './cartContainer';
+@import './loading';
+
 @import './carousel';
+
 @import './paymentMethod';
+
+@import './categories';
 @import './products';
+@import './productDetail';
 
 

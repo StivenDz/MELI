@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import logoResponsive from '@logos/nav_logo_responsive.png';
 
 const navigationResponsive = () => {
@@ -8,7 +9,9 @@ const navigationResponsive = () => {
     return ( 
         <header className='navigationResponsive'>
             <div>
-                <img src={logoResponsive} alt="" />
+                <Link to="/">
+                    <img src={logoResponsive} alt="" />
+                </Link>
                 <section className='inputSection'>
                     <input type="text" placeholder="Estoy buscando..."/>
                     <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />

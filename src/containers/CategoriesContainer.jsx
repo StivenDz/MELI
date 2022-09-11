@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import CategoriesList from '@components/CategoriesList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Categories = ({showOrHide}) => {
+const CategoriesContainer = ({showOrHide}) => {
     const [isHovering,setIsHoveing] = React.useState(false)
     return ( 
         <motion.article 
             animate={{opacity: (showOrHide || isHovering) ? 1 : 0,pointerEvents : (showOrHide || isHovering) ? 'all' : 'none'}}
-            className="categories"
+            className="categoriesContainer"
         >
             <div onMouseOver={()=> setIsHoveing(true)}
                 onMouseLeave={()=> setIsHoveing(false)}
@@ -21,4 +21,4 @@ const Categories = ({showOrHide}) => {
      );
 }
  
-export default Categories;
+export default CategoriesContainer;

@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import AppContext from '@context/AppContext';
 import { motion } from 'framer-motion';
 import {usePriceFormat} from '@hooks/usePriceFormat';
+import ProductRating from '@components/ProductRating';
 
 const ProductItem = ({props}) => {
     const [isFavorite,setIsFavorite] = React.useState("fa-regular fa-heart");
@@ -23,11 +26,15 @@ const ProductItem = ({props}) => {
                 icon={isFavorite}
                 onClick={()=> isFavoriteFunction()}
              />
-            
-            <motion.img src={(props.thumbnail).replace('I.jpg','F.jpg')} alt="" />
+            <Link to={`/product=${props.title}/${props.id}`}>
+                <motion.img src={(props.thumbnail).replace('I.jpg','F.jpg')} alt="" />
+            </Link>
             <motion.div className='content'>
                 <motion.p>{props.title}</motion.p>
-                <motion.span>$ {usePriceFormat(props.price)}</motion.span>
+                <div>
+                    <motion.span>$ {usePriceFormat(props.price)}</motion.span>
+                    <ProductRating id={props.id}/>
+                </div>
 
                 {!((state.cart).includes(props)) ? 
                     <button 

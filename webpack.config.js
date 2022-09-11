@@ -1,6 +1,7 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 module.exports = {
@@ -11,7 +12,6 @@ module.exports = {
         publicPath: '/'
     },
     mode:'development',
-    // mode:'production',
     resolve:{
         extensions: ['.js', '.jsx'],
         alias:{
@@ -103,6 +103,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
+        new Dotenv(),
     ],
     
     devServer:{
