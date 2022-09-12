@@ -44,31 +44,58 @@ Builds the app for production to the `dist` folder.\
   
       * in this folder you can find all the jsx components like:
       
+        * CartItem.jsx
+        * CartList.jsx
+        * CategoriesList.jsx
+        * Loading.jsx
+        * PaymentMethodItem.jsx
+        * Productitem.jsx
+        * ProductRating.jsx
+      
   * ### [`src/containers/`](https://github.com/StivenDz/MELI/tree/master/src/containers)
   
       * in this folder you can find all the jsx containers like:
+
+        * Carousel.jsx
+        * CartContainer.jsx
+        * CategoriesContainer.jsx
+        * Navigation.jsx
+        * NavigationResponsive.jsx
+        * PaymentMethodContainer.jsx
+        * ProductList.jsx
       
   * ### [`src/context/`](https://github.com/StivenDz/MELI/tree/master/src/context)
   
       * in this folder you can find the AppContext:
       
+        * AppContext.js
+      
   * ### [`src/hooks/`](https://github.com/StivenDz/MELI/tree/master/src/hooks)
   
        * in this folder you can find all the custom hooks like:
+       
+         * useinitialState.js
+         * usePriceFormat.js
       
   * ### [`src/pages/`](https://github.com/StivenDz/MELI/tree/master/src/pages)
   
       * in this folder you can find all the pages like:
       
+        * Categories.jsx
+        * Home.jsx
+        * NotFound.jsx
+        * productDetail.jsx
+        * ProductsByCategory.jsx
+      
   * ### [`src/routes/`](https://github.com/StivenDz/MELI/tree/master/src/routes)
   
       * in this folder you can find the App.jsx file, which contains the routes of the application:
       
-  * ### [`src/sass/`](https://github.com/StivenDz/MELI/tree/master/src/sass)
-  
-      * in this folder you can find all .scss files like:
+        *  App.jsx
       
   * ### [`src/styles/`](https://github.com/StivenDz/MELI/tree/master/src/styles)
   
       * in this folder you can find the index.css which contains all the styles:
+      
+        * index.css
       
