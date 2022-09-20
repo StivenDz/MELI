@@ -1,13 +1,12 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const idCol = 'MCO';
-const API = `https://api.mercadolibre.com/sites/${idCol}/categories`;
+
 const CategoriesList = () => {
+    const API = `${process.env.BASE_URL_COLSITE}/categories`;
 
-    const [categories, setCategories] = React.useState([]);
-
+    const [categories, setCategories] = React.useState(null);
     React.useEffect(() => {
         const execute = async () => {
             await axios.get(API)
@@ -16,9 +15,10 @@ const CategoriesList = () => {
         }
         execute();
     }, []);
+
     return (
         <article className='categoriesList'>
-            {categories.length > 0 &&
+            {categories &&
                 categories.map(category => (
                     <Link to={`/category=${category.name}/${category.id}`} key={category.id}>
                         <div key={category.id} id={category.id}>

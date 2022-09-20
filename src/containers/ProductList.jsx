@@ -8,10 +8,9 @@ import Loading from '@components/Loading';
 
 
 const ProductList = ({category}) => {
-    const idCol = 'MCO';
     const comp = "MCO1648";
-    const API = `https://api.mercadolibre.com/sites/${idCol}/search?category=${category || comp}`;
-
+    const API = `${process.env.BASE_URL_COLSITE}/search?category=${category || comp}`;
+    
     const [products, setProducts] = React.useState(null);
     const [selectedId, setSelectedId] = React.useState({
         id:null,

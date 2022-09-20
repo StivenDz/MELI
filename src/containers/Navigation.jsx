@@ -10,9 +10,10 @@ import CategoriesContainer from "@containers/CategoriesContainer";
 import AppContext from '@context/AppContext';
 
 const Navigation = () => {
+    const {state} = React.useContext(AppContext);
     const [showCart,setShowCart] = React.useState(false);
     const [showCategories,setShowCategories] = React.useState(false);
-    const {state} = React.useContext(AppContext);
+
     return (
         <>
             <header className="navigation">

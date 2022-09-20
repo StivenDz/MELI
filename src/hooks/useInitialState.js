@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Cart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [];
+let Cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+Cart == [] ? console.log("vacio") : console.log(Cart);
 
 const initialState = {
     cart: Cart,

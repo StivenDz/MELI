@@ -1,12 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Navigation from '@containers/Navigation';
-import NavigationResponsive from '@containers/NavigationResponsive';
 import ProductRating from '@components/ProductRating';
+import NavigationResponsive from '@containers/NavigationResponsive';
 import Loading from '@components/Loading';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {usePriceFormat} from '@hooks/usePriceFormat';
 
@@ -14,6 +15,7 @@ const ProductDetail = () => {
     const {productId} = useParams();
     const [productDetail,setProductDetail] = React.useState(null);
     const [selectedImage,setSelectedImage] = React.useState(null);
+    const [seller,setSeller] = React.useState(null);
     const API = `${process.env.BASE_URL}/items/${productId}`;
 
     React.useEffect(()=>{
@@ -26,6 +28,10 @@ const ProductDetail = () => {
             })
             .catch(err => console.log('error productDetail'))
     },[]);
+
+    // React.useEffect(()=>{
+    //     axios.get()
+    // },[productDetail])
 
     const hoverImage = (e) =>{
         setSelectedImage(e.target.src);
@@ -64,7 +70,25 @@ const ProductDetail = () => {
                                 <span className='price'>$ {usePriceFormat(productDetail.price)}</span>
                         </section>
                         <article className='paymentMethod'>
-
+                                <p>Hasta 48 cuotas</p>
+                                <div className='methods'>
+                                    <div className='visa' alt=""></div>
+                                    <div className='' alt=""></div>
+                                    <div className='mastercadr' alt=""></div>
+                                </div>
+                                <Link to="#">Más información</Link>
+                                <div className='shipments'>
+                                    <FontAwesomeIcon icon="fa-solid fa-truck" />
+                                    <div>
+                                        <p>Envío gratis a nivel nacional</p>
+                                        <p>Conoce los tiempos y las formas de envío.</p>
+                                        <Link to="#">
+                                            <FontAwesomeIcon icon="fa-solid fa-location-dot" />  
+                                            Calcular cuándo llega
+                                        </Link>
+                                    </div>
+                                </div>
+                                <p>Vendido Por</p>
                         </article>
                     </section>
                     :

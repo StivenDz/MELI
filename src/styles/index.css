@@ -254,7 +254,7 @@ body {
     overflow: visible;
     position: absolute;
     z-index: 999;
-    left: 200px; }
+    left: 14.9%; }
     .categoriesContainer > div .bar {
       height: 25px;
       top: -17px;
@@ -739,6 +739,45 @@ body {
     border-radius: 8px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 25px 16px; }
+    .productDetail .paymentMethod > .methods {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px; }
+      .productDetail .paymentMethod > .methods > div:nth-child(1) {
+        width: 62px;
+        height: 20px;
+        background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+        background-position: left -152px; }
+      .productDetail .paymentMethod > .methods > div:nth-child(2) {
+        width: 22px;
+        height: 19px;
+        background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+        background-position: left -61px; }
+      .productDetail .paymentMethod > .methods > div:nth-child(3) {
+        width: 29px;
+        height: 24px;
+        background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+        background-position: left -82px; }
+    .productDetail .paymentMethod a {
+      text-decoration: none;
+      color: #3483fa;
+      font-size: 13px; }
+    .productDetail .paymentMethod > .shipments {
+      display: flex;
+      padding-top: 15px;
+      gap: 5px; }
+      .productDetail .paymentMethod > .shipments > svg {
+        color: #00a650;
+        margin-top: 4px; }
+      .productDetail .paymentMethod > .shipments > div p:nth-child(1) {
+        color: #00a650;
+        margin-bottom: 2px;
+        font-weight: 400; }
+      .productDetail .paymentMethod > .shipments > div p:nth-child(2) {
+        font-size: 13.5px;
+        color: rgba(0, 0, 0, 0.55); }
+      .productDetail .paymentMethod > .shipments > div > a svg {
+        margin-right: 5px; }
 
 .notFoundNav {
   height: 54px;

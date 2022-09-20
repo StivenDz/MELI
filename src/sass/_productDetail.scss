@@ -7,6 +7,7 @@
     min-height: 120vh;
     border-radius: 4px;
     padding-right: 16px;
+
     .images {
         display: flex;
         flex-direction: column;
@@ -22,7 +23,7 @@
             width: 48px;
             border-radius: 4px;
             position: relative;
-            
+
             img {
                 border: 1px solid #8080807a;
                 padding: 2px;
@@ -33,7 +34,8 @@
                 width: 48px;
                 border-radius: 4px;
             }
-            .selected{
+
+            .selected {
                 outline: 2px solid $blueStandar;
             }
         }
@@ -49,25 +51,28 @@
         align-items: center;
         justify-content: center;
         min-height: 500px;
-            img {
-                max-height: 356px;
-                object-fit: contain;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-            }
+
+        img {
+            max-height: 356px;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
     }
 
-    .productDescription{
+    .productDescription {
         width: 35%;
         max-width: 352px;
         padding-top: 40px;
-        .new{
+
+        .new {
             font-size: 13px;
             color: #808080;
             margin-bottom: 10px;
         }
-        h1{
+
+        h1 {
             font-size: 22px;
             font-weight: 450;
             line-height: 1.28;
@@ -75,23 +80,26 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* number of lines to show */
+            -webkit-line-clamp: 3;
+            /* number of lines to show */
             -webkit-box-orient: vertical;
-            color: rgba(0,0,0,.9);
+            color: rgba(0, 0, 0, .9);
         }
 
-        .price{
+        .price {
             display: block;
             font-size: 36px;
             margin-top: 10px;
             font-weight: 350;
         }
+
         .ratingContainer {
             display: flex;
             align-items: center;
             margin-top: 15px;
             gap: 15px;
-            .stars{
+
+            .stars {
                 color: $blueStandar;
                 display: flex;
                 gap: 3px;
@@ -100,12 +108,69 @@
 
     }
 
-    .paymentMethod{
+    .paymentMethod {
         margin-top: 16px;
         width: 24%;
         flex-grow: 1;
         border-radius: 8px;
-        border: 1px solid rgba(0,0,0,.1);
+        border: 1px solid rgba(0, 0, 0, .1);
         padding: 25px 16px;
+
+        &>.methods {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+            &>div:nth-child(1) {
+                width: 62px;
+                height: 20px;
+                background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+                background-position: left -152px;
+            }
+
+            &>div:nth-child(2) {
+                width: 22px;
+                height: 19px;
+                background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+                background-position: left -61px;
+            }
+
+            &>div:nth-child(3) {
+                width: 29px;
+                height: 24px;
+                background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+                background-position: left -82px;
+            }
+        }
+        a{
+            text-decoration: none;
+            color: $blueStandar;
+            font-size: 13px;
+        }
+
+        & > .shipments{
+            display: flex;
+            padding-top: 15px;
+            gap: 5px;
+            & > svg{
+                color: #00a650;
+                margin-top: 4px;
+            }
+            & > div{
+                p:nth-child(1){
+                    color:#00a650;
+                    margin-bottom: 2px;
+                    font-weight: 400;
+                }
+                p:nth-child(2){
+                    font-size: 13.5px;
+                    color: rgba(0,0,0,.55);
+                }
+                & > a{
+                    svg{
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
     }
 }
