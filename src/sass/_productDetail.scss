@@ -120,6 +120,7 @@
             display: flex;
             gap: 5px;
             margin-top: 5px;
+
             &>div:nth-child(1) {
                 width: 62px;
                 height: 20px;
@@ -141,35 +142,144 @@
                 background-position: left -82px;
             }
         }
-        a{
+
+        &>.infomation {
             text-decoration: none;
             color: $blueStandar;
             font-size: 13px;
         }
 
-        & > .shipments{
+        & .sellerBy {
+            font-size: 14px;
+            margin-top: 12px;
+
+            &>.seller {
+                text-decoration: none;
+                color: $blueStandar;
+                font-size: 15px;
+            }
+        }
+
+        &>.sold {
+            font-size: 15px;
+        }
+
+        &>.shipments {
             display: flex;
             padding-top: 15px;
             gap: 5px;
-            & > svg{
+
+            &>svg {
                 color: #00a650;
                 margin-top: 4px;
             }
-            & > div{
-                p:nth-child(1){
-                    color:#00a650;
+
+            &>div {
+                p:nth-child(1) {
+                    color: #00a650;
                     margin-bottom: 2px;
                     font-weight: 400;
                 }
-                p:nth-child(2){
+
+                p:nth-child(2) {
                     font-size: 13.5px;
-                    color: rgba(0,0,0,.55);
+                    color: rgba(0, 0, 0, .55);
                 }
-                & > a{
-                    svg{
+
+                &>a {
+                    text-decoration: none;
+                    color: $blueStandar;
+                    font-size: 13px;
+
+                    svg {
                         margin-right: 5px;
                     }
                 }
+            }
+        }
+
+        &>.available {
+            margin-top: 25px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        &>.quantity-container {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+
+            & .quantity {
+                display: flex;
+                cursor: pointer;
+                align-items: center;
+                &>h4 {
+                    @extend .available;
+                    font-weight: 400;
+                }
+
+                &>p {
+                    margin-left: 10px;
+                }
+
+                & > svg{
+                    margin-left: 3px;
+                    color: $blueStandar;
+                    transition: transform .5s;
+                }
+                & > .rotate{
+                    transform: rotate(180deg);
+                }
+            }
+
+            &>p {
+                color: rgba(0, 0, 0, .55);
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+
+        &>.buyNowButton {
+            margin-top: 25px;
+            -webkit-font-smoothing: antialiased;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            display: inline-block;
+            font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            height: 48px;
+            line-height: 48px;
+            padding: 0 24px;
+            text-align: center;
+            width: 100%;
+            color: #fff;
+            background: $blueStandar;
+            transition: background .5s;
+
+            &:hover {
+                background: $blueStandarHover;
+            }
+        }
+
+        &>.addToCartButton {
+            @extend .buyNowButton;
+            margin-top: 10px;
+            background: $blueLigth;
+            color: $blueStandar;
+
+            &:hover {
+                background: $blueLigthHover;
+            }
+        }
+        & > .deleteFromCartButton{
+            @extend .addToCartButton;
+            background: $redLigth;
+            color: $redDark;
+            &:hover{
+                background:$redLigthHover;
             }
         }
     }

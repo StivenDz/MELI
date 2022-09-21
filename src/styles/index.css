@@ -758,10 +758,19 @@ body {
         height: 24px;
         background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
         background-position: left -82px; }
-    .productDetail .paymentMethod a {
+    .productDetail .paymentMethod > .infomation {
       text-decoration: none;
       color: #3483fa;
       font-size: 13px; }
+    .productDetail .paymentMethod .sellerBy {
+      font-size: 14px;
+      margin-top: 12px; }
+      .productDetail .paymentMethod .sellerBy > .seller {
+        text-decoration: none;
+        color: #3483fa;
+        font-size: 15px; }
+    .productDetail .paymentMethod > .sold {
+      font-size: 15px; }
     .productDetail .paymentMethod > .shipments {
       display: flex;
       padding-top: 15px;
@@ -776,8 +785,70 @@ body {
       .productDetail .paymentMethod > .shipments > div p:nth-child(2) {
         font-size: 13.5px;
         color: rgba(0, 0, 0, 0.55); }
-      .productDetail .paymentMethod > .shipments > div > a svg {
-        margin-right: 5px; }
+      .productDetail .paymentMethod > .shipments > div > a {
+        text-decoration: none;
+        color: #3483fa;
+        font-size: 13px; }
+        .productDetail .paymentMethod > .shipments > div > a svg {
+          margin-right: 5px; }
+    .productDetail .paymentMethod > .available, .productDetail .paymentMethod > .quantity-container .quantity.paymentMethod > h4 {
+      margin-top: 25px;
+      font-size: 16px;
+      font-weight: 500; }
+    .productDetail .paymentMethod > .quantity-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between; }
+      .productDetail .paymentMethod > .quantity-container .quantity {
+        display: flex;
+        cursor: pointer;
+        align-items: center; }
+        .productDetail .paymentMethod > .quantity-container .quantity > h4 {
+          font-weight: 400; }
+        .productDetail .paymentMethod > .quantity-container .quantity > p {
+          margin-left: 10px; }
+        .productDetail .paymentMethod > .quantity-container .quantity > svg {
+          margin-left: 3px;
+          color: #3483fa;
+          transition: transform .5s; }
+        .productDetail .paymentMethod > .quantity-container .quantity > .rotate {
+          transform: rotate(180deg); }
+      .productDetail .paymentMethod > .quantity-container > p {
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 14px;
+        font-weight: 400; }
+    .productDetail .paymentMethod > .buyNowButton, .productDetail .paymentMethod > .addToCartButton, .productDetail .paymentMethod > .deleteFromCartButton {
+      margin-top: 25px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      display: inline-block;
+      font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      height: 48px;
+      line-height: 48px;
+      padding: 0 24px;
+      text-align: center;
+      width: 100%;
+      color: #fff;
+      background: #3483fa;
+      transition: background .5s; }
+      .productDetail .paymentMethod > .buyNowButton:hover, .productDetail .paymentMethod > .addToCartButton:hover, .productDetail .paymentMethod > .deleteFromCartButton:hover {
+        background: #1668e4; }
+    .productDetail .paymentMethod > .addToCartButton, .productDetail .paymentMethod > .deleteFromCartButton {
+      margin-top: 10px;
+      background: rgba(65, 137, 230, 0.15);
+      color: #3483fa; }
+      .productDetail .paymentMethod > .addToCartButton:hover, .productDetail .paymentMethod > .deleteFromCartButton:hover {
+        background: rgba(65, 137, 230, 0.253); }
+    .productDetail .paymentMethod > .deleteFromCartButton {
+      background: rgba(230, 65, 65, 0.15);
+      color: #c31212; }
+      .productDetail .paymentMethod > .deleteFromCartButton:hover {
+        background: rgba(230, 65, 65, 0.253); }
 
 .notFoundNav {
   height: 54px;

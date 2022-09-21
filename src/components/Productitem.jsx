@@ -11,8 +11,8 @@ const ProductItem = ({ props }) => {
     const { state, addToCart, removeFromCart } = React.useContext(AppContext);
     const [isFavorite, setIsFavorite] = React.useState("fa-regular fa-heart");
     const [isAddedToCart, setIsAddedToCart] = React.useState(
-
-        localStorage.getItem('cart') ? (JSON.stringify(state.cart)).includes(JSON.stringify(props)) : false
+        (state.cart).filter(item => item.id === props.id).length === 0 ? false : true
+        // localStorage.getItem('cart') ? (JSON.stringify(state.cart)).includes(JSON.stringify(props)) : false
     );
 
     const isFavoriteFunction = () => {
@@ -34,6 +34,10 @@ const ProductItem = ({ props }) => {
                 setIsAddedToCart(true)
             )
     }
+
+    React.useEffect(()=>{
+        setIsAddedToCart((state.cart).filter(item => item.id === props.id).length === 0 ? false : true);
+    },[state.cart])
 
     const productUrl = `/product=${(props.title).replace(/[^a-zA-Z0-9 ]/g, "")}/${props.id}`;
 
@@ -59,7 +63,7 @@ const ProductItem = ({ props }) => {
                     </div>
                 </Link>
 
-                {isAddedToCart && state.cart.includes(props) ?
+                {isAddedToCart ?
 
                     <motion.button
                         className='removeFromCart'
