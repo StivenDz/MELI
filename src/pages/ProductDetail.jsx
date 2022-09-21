@@ -8,6 +8,7 @@ import Navigation from '@containers/Navigation';
 import ProductRating from '@components/ProductRating';
 import NavigationResponsive from '@containers/NavigationResponsive';
 import Loading from '@components/Loading';
+import Quantity from '../components/Quantity';
 
 import { usePriceFormat } from '@hooks/usePriceFormat';
 import AppContext from "@context/AppContext";
@@ -23,7 +24,7 @@ const ProductDetail = () => {
     const [selectedImage, setSelectedImage] = React.useState(null);
     const [seller, setSeller] = React.useState(null);
     const [quantitySelected, setQuantitySelected] = React.useState(initialState);
-    const {state ,addToCartBtn,removeFromCart} = React.useContext(AppContext);
+    const {state ,addToCart,removeFromCart} = React.useContext(AppContext);
     const [isAddedToCartBtn,setIsAddedToCartBtn] = React.useState(
         (state.cart).filter(item => item.id === productId).length === 0 ? false : true
     )
@@ -64,10 +65,10 @@ const ProductDetail = () => {
         });
     }
 
-    const alterQuantity = () =>{
+    const alterQuantity = (out = false) =>{
         setQuantitySelected({
             ...quantitySelected,
-            clickedQuantity: !(quantitySelected.clickedQuantity)
+            clickedQuantity: out ? false : !(quantitySelected.clickedQuantity)
         });
     }
 
@@ -79,11 +80,18 @@ const ProductDetail = () => {
             )
             :
             (
-                addToCartBtn(product),
+                addToCart(product),
                 setIsAddedToCartBtn(true)
             )
     }
 
+    const handleUnclickQuantity = (e) =>{
+        !(document.getElementById('quantity').contains(e.target)) &&
+            setQuantitySelected({
+                ...quantitySelected,
+                clickedQuantity: false
+            }); 
+    }
     return (
         <>
             {window.innerWidth > 976 ?
@@ -92,7 +100,7 @@ const ProductDetail = () => {
                 <NavigationResponsive />
             }
 
-            <main >
+            <main onClick={handleUnclickQuantity}>
                 {productDetail ?
                     <section className='productDetail'>
                         <aside className="images">
@@ -135,10 +143,15 @@ const ProductDetail = () => {
 
                             <h4 className='available'>Stock disponible</h4>
                             <div className='quantity-container'>
-                                <div className='quantity' onClick={() => alterQuantity()}>
+                                <div className='quantity' id='quantity' onClick={() => alterQuantity()} onAuxClick={()=> alterQuantity(true)}>
                                     <h4 className=''>Cantidad:</h4>
-                                    <p>{quantitySelected.num} {quantitySelected.num > 1 ? "Unidades" : "Unidad"}</p>
+                                    <p>{quantitySelected.num} {quantitySelected.num > 1 ? "unidades" : "unidad"}</p>
                                     <FontAwesomeIcon className={quantitySelected.clickedQuantity ? "rotate" : "keep"} icon="fa-solid fa-angle-down" />
+                                    {quantitySelected.clickedQuantity && 
+                                        <Quantity 
+                                        avilable={productDetail.available_quantity}
+                                        quantitySelected={quantitySelected.num}
+                                    />}
                                 </div>
                                 <p>({productDetail.available_quantity} disponibles)</p>
                             </div>
