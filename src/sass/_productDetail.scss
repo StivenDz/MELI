@@ -84,6 +84,7 @@
             /* number of lines to show */
             -webkit-box-orient: vertical;
             color: rgba(0, 0, 0, .9);
+            padding-right: 10px;
         }
 
         .price {
@@ -208,6 +209,7 @@
             margin-top: 25px;
             display: flex;
             justify-content: space-between;
+            gap: 7px;
 
             & .quantity {
                 display: flex;
@@ -215,6 +217,7 @@
                 align-items: center;
                 position: relative;
                 overflow: visible;
+                
                 .quantities{
                     position: absolute;
                     z-index: 100;
@@ -257,6 +260,9 @@
 
                 &>p {
                     margin-left: 10px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    white-space: nowrap
                 }
 
                 & > svg{
@@ -271,8 +277,9 @@
 
             &>p {
                 color: rgba(0, 0, 0, .55);
-                font-size: 14px;
+                font-size: 12px;
                 font-weight: 400;
+                flex-grow: 2;
             }
         }
 

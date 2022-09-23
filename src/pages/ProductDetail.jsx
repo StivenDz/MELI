@@ -13,22 +13,25 @@ import Quantity from '../components/Quantity';
 import { usePriceFormat } from '@hooks/usePriceFormat';
 import AppContext from "@context/AppContext";
 
-const initialState = {
-    num: 1,
-    clickedQuantity: false
-}
 
 const ProductDetail = () => {
+    const { state, addToCart, removeFromCart } = React.useContext(AppContext);
+    const initialState = {
+        num:
+            state.quantity.filter(q => (q.id === productId)).length > 0 ?
+                state.quantity.filter(q => (q.id === productId))[0].quantitySelected
+                :
+                1,
+        clickedQuantity: false
+    }
     const { productId } = useParams();
     const [productDetail, setProductDetail] = React.useState(null);
     const [selectedImage, setSelectedImage] = React.useState(null);
     const [seller, setSeller] = React.useState(null);
     const [quantitySelected, setQuantitySelected] = React.useState(initialState);
-    const {state ,addToCart,removeFromCart} = React.useContext(AppContext);
-    const [isAddedToCartBtn,setIsAddedToCartBtn] = React.useState(
+    const [isAddedToCartBtn, setIsAddedToCartBtn] = React.useState(
         (state.cart).filter(item => item.id === productId).length === 0 ? false : true
-    )
-
+    );
     const API = `${process.env.BASE_URL}/items/${productId}`;
 
     React.useEffect(() => {
@@ -37,9 +40,9 @@ const ProductDetail = () => {
                 setProductDetail(res.data);
                 setSelectedImage(res.data.pictures[0].secure_url);
                 document.title = `${res.data.title} | Mercado Libre`;
-                console.log(res.data);
+                //console.log(res.data);
             })
-            .catch(err => console.log('error productDetail'))
+            .catch(err => console.log('error productDetail'));
     }, []);
 
     React.useEffect(() => {
@@ -47,14 +50,27 @@ const ProductDetail = () => {
             axios.get(`${process.env.BASE_URL_COLSITE}/search?seller_id=${productDetail.seller_id}`)
                 .then(res => {
                     setSeller(res.data);
-                    console.log(res.data);
+                    //console.log(res.data);
                 })
-                .catch(err => console.log("error productDetail"))
+                .catch(err => console.log("error productDetail"));
     }, [productDetail]);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         setIsAddedToCartBtn((state.cart).filter(item => item.id === productId).length === 0 ? false : true);
-    },[state.cart])
+    }, [state.cart]);
+
+    React.useEffect(() => {
+        setQuantitySelected({
+            ...quantitySelected,
+            num:
+                state.quantity.filter(q => (q.id === productId)).length > 0 ?
+                    state.quantity.filter(q => (q.id === productId))[0].quantitySelected
+                    :
+                    1,
+        }
+
+        )
+    }, [state.quantity]);
 
     const hoverImage = (e) => {
         setSelectedImage(e.target.src);
@@ -65,7 +81,7 @@ const ProductDetail = () => {
         });
     }
 
-    const alterQuantity = (out = false) =>{
+    const alterQuantity = (out = false) => {
         setQuantitySelected({
             ...quantitySelected,
             clickedQuantity: out ? false : !(quantitySelected.clickedQuantity)
@@ -80,17 +96,17 @@ const ProductDetail = () => {
             )
             :
             (
-                addToCart(product),
+                addToCart(product,quantitySelected.num),
                 setIsAddedToCartBtn(true)
             )
     }
 
-    const handleUnclickQuantity = (e) =>{
+    const handleUnclickQuantity = (e) => {
         !(document.getElementById('quantity').contains(e.target)) &&
             setQuantitySelected({
                 ...quantitySelected,
                 clickedQuantity: false
-            }); 
+            });
     }
     return (
         <>
@@ -143,26 +159,29 @@ const ProductDetail = () => {
 
                             <h4 className='available'>Stock disponible</h4>
                             <div className='quantity-container'>
-                                <div className='quantity' id='quantity' onClick={() => alterQuantity()} onAuxClick={()=> alterQuantity(true)}>
+                                <div className='quantity' id='quantity' onClick={() => alterQuantity()} onAuxClick={() => alterQuantity(true)}>
                                     <h4 className=''>Cantidad:</h4>
                                     <p>{quantitySelected.num} {quantitySelected.num > 1 ? "unidades" : "unidad"}</p>
                                     <FontAwesomeIcon className={quantitySelected.clickedQuantity ? "rotate" : "keep"} icon="fa-solid fa-angle-down" />
-                                    {quantitySelected.clickedQuantity && 
-                                        <Quantity 
-                                        avilable={productDetail.available_quantity}
-                                        quantitySelected={quantitySelected.num}
-                                    />}
+                                    {
+                                        quantitySelected.clickedQuantity &&
+                                        <Quantity
+                                            avilable={productDetail.available_quantity}
+                                            quantity={quantitySelected.num}
+                                            productId={productId}
+                                        />
+                                    }
                                 </div>
-                                <p>({productDetail.available_quantity} disponibles)</p>
+                                <p>({productDetail.available_quantity >= 100 ? "+99" : productDetail.available_quantity} disponibles)</p>
                             </div>
 
                             <button className='buyNowButton'>Comprar ahora</button>
-                            {isAddedToCartBtn ? 
+                            {isAddedToCartBtn ?
 
-                                <button className='deleteFromCartButton' onClick={()=> handleAddOrRemoveFromCart('remove',productDetail)}>Eliminar del carrito</button> 
+                                <button className='deleteFromCartButton' onClick={() => handleAddOrRemoveFromCart('remove', productDetail)}>Eliminar del carrito</button>
                                 :
-                                <button className='addToCartButton' onClick={()=> handleAddOrRemoveFromCart('add',productDetail)}>Agregar al carrito</button> 
-                        
+                                <button className='addToCartButton' onClick={() => handleAddOrRemoveFromCart('add', productDetail)}>Agregar al carrito</button>
+
                             }
 
                         </article>

@@ -10,8 +10,8 @@ import { usePriceFormat } from '@hooks/usePriceFormat';
  */
 
 const CartItem = ({item}) => {
-    const {removeFromCart} = React.useContext(AppContext);
-
+    const {removeFromCart,state} = React.useContext(AppContext);
+    const [quantity,setQuantity] = React.useState(state.quantitySelected.filter(quantity => quantity.id === item.id)[0]);
     return ( 
         <motion.section className='cartItem'>
             <FontAwesomeIcon 
@@ -22,7 +22,8 @@ const CartItem = ({item}) => {
             <img src={(item.thumbnail).replace('I.jpg','F.jpg')} alt={item.title} title={item.title} id={item.id} />
             <div>
                 <h4>{item.title}</h4>
-                <span>${usePriceFormat(item.price)}</span>
+                <p>{quantity.selected === 1 ? `${quantity.selected} Unidad` : `${quantity.selected} Unidades`}</p>
+                <span>${usePriceFormat(item.price * quantity.selected)}</span>
             </div>
         </motion.section>
      );

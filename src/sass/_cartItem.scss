@@ -2,8 +2,13 @@
     position: relative;
     display: flex;
     padding: 0 15px;
+    margin-top: 15px;
     justify-content: space-between;
     border-bottom: 1px solid rgba(63, 63, 63, 0.212);
+    &:last-of-type{
+        border-bottom: 1px solid rgba(63, 63, 63, 0) !important;
+        margin-bottom: 130px;
+    }
     & > .deleteItem{
         position: absolute;
         right: 30px;
@@ -29,8 +34,18 @@
         flex-grow: 2;
         padding-left: 20px;
         h4{
-            max-height: 50px;
+            // max-height: 50px;
             overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            /* number of lines to show */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 3px;
+        }
+        span{
+            color: $blueDark;
         }
     }
 }
