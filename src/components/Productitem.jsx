@@ -50,7 +50,7 @@ const ProductItem = ({ props }) => {
                 onClick={() => isFavoriteFunction()}
             />
             <Link to={productUrl}>
-                <motion.img src={(props.thumbnail).replace('I.jpg', 'F.jpg')} alt="" />
+                <motion.img src={(props.thumbnail).replace('I.jpg', 'F.jpg')} title={props.title} alt={props.title} />
             </Link>
             <motion.div className='content'>
                 <Link to={productUrl}>

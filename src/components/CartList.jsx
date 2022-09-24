@@ -15,15 +15,6 @@ import { Link } from 'react-router-dom';
  */
 const CartList = ({ showOrHideList }) => {
     const { state } = React.useContext(AppContext);
-    const [total, setTotal] = React.useState(0);
-
-    React.useEffect(() => {
-        let sum = 0;
-        state.cart.map(product => (
-            sum += product.price
-        ));
-        setTotal(sum);
-    }, [state.cart]);
 
     return (
         <motion.aside
@@ -43,7 +34,7 @@ const CartList = ({ showOrHideList }) => {
                             <p>Total </p>
                             <span>$ {usePriceFormat(state.total)}</span>
                         </figure>
-                        <Link to="#">Continuar Compra</Link>
+                        <Link to="/cart">Continuar Compra</Link>
                     </div>
                 </>
                 :

@@ -12,6 +12,10 @@ import { usePriceFormat } from '@hooks/usePriceFormat';
 const CartItem = ({item}) => {
     const {removeFromCart,state} = React.useContext(AppContext);
     const [quantity,setQuantity] = React.useState(state.quantitySelected.filter(quantity => quantity.id === item.id)[0]);
+
+    React.useEffect(()=>{
+        setQuantity(state.quantitySelected.filter(quantity => quantity.id === item.id)[0])
+    },[state.quantitySelected])
     return ( 
         <motion.section className='cartItem'>
             <FontAwesomeIcon 

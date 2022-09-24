@@ -8,12 +8,12 @@ const initialState = {
     quantitySelected: QuantitySelected,
     favorites: [],
     quantity: [],
-    total:0
+    total:0,
+    isLogged:true  //working on it
 }
 
 const useInitialState = () => {
     const [state, setState] = React.useState(initialState);
-
 
     const quantitySelected = (productId, quantity) => {
         setState({
@@ -34,9 +34,40 @@ const useInitialState = () => {
         })
     }
 
-    // localStorage.setItem('quantitySelected', JSON.stringify(state.quantity.map(selected => (
-    //     selected.id === product.id ? [{ id: product.id, selected: quantity }] : [selected]
-    // ))))
+    const increaseOrDecreaseQuantity = (type,available,id) =>{ //testing function
+        let quantitySelected = (state.quantitySelected.filter(q => q.id === id))[0].selected
+        type === "+" ? 
+            (
+                console.log("increase",quantitySelected),
+                quantitySelected < available ?
+                 (
+                    console.log("available to increase"),
+                    setState({
+                        ...state,
+                        quantitySelected: state.quantitySelected.map(quantity => (
+                            quantity.id === id ? {id:id,selected: quantity.selected + 1} : quantity
+                        ))
+                    })
+                ) : console.log("unavailable to increase")
+
+            )
+            :
+            (
+                console.log("decrease",quantitySelected),
+                quantitySelected === 1 ? 
+                    console.log("unavailable to decrease")
+                    :
+                    (
+                        console.log("available to decrease"),
+                        setState({
+                            ...state,
+                            quantitySelected: state.quantitySelected.map(quantity => (
+                                quantity.id === id ? {id:id,selected: quantity.selected - 1} : quantity
+                            ))
+                        })
+                    )
+            )
+    }
 
     const addToCart = (product, quantity = 1) => {
         setState({
@@ -52,6 +83,7 @@ const useInitialState = () => {
             selected: quantity
         }]))
     }
+
     const removeFromCart = (product) => {
         setState({
             ...state,
@@ -73,13 +105,26 @@ const useInitialState = () => {
                     ))[0].selected * product.price
                 )).reduce((previousValue, currentValue) => previousValue + currentValue,0)
             })
-    },[state.cart])
+    },[state.quantitySelected,state.cart ])
+
+
+    React.useEffect(()=>{
+        localStorage.setItem('quantitySelected', JSON.stringify(state.quantitySelected))
+    },[state.quantitySelected])
+
+    // const Auth = () =>{
+    //     setState({
+    //         ...state,
+    //         isLogged:true
+    //     })
+    // }
 
     return {
         state,
         addToCart,
         removeFromCart,
-        quantitySelected
+        quantitySelected,
+        increaseOrDecreaseQuantity
     }
 }
 
