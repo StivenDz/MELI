@@ -24,6 +24,7 @@ module.exports = {
 			'@logos': path.join(__dirname, '/src/assets/logos/'),
 			'@hooks': path.join(__dirname, '/src/hooks/'),
 			'@context': path.join(__dirname, '/src/context/'),
+			'@service': path.join(__dirname, '/src/service/'),
         }
     },
 

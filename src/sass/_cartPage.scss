@@ -52,33 +52,37 @@
         gap: 16px;
         // justify-content: space-between;
 
-        img {
+        & > a > img {
             width: 48px;
             height: 48px;
         }
 
-        .titleAndOptions {
+        & > .titleAndOptions {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
             width: 55%;
 
-            .productOptions {
+            & > .productOptions {
                 display: flex;
             }
 
-            h2 {
-                font-size: 18px;
-                font-weight: 500;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                /* number of lines to show */
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
+            & > a{
+                text-decoration: none;
+                color: #000;
+                & > h2 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    /* number of lines to show */
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+            } 
 
             & > p {
                 font-size: 14px;

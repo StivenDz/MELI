@@ -1,6 +1,7 @@
 import React from 'react';
 import AppContext from '@context/AppContext';
 import { usePriceFormat } from '@hooks/usePriceFormat';
+import { Link } from 'react-router-dom';
 
 const CartPageItem = ({product}) => {
     const {state,removeFromCart,increaseOrDecreaseQuantity} = React.useContext(AppContext);
@@ -11,12 +12,16 @@ const CartPageItem = ({product}) => {
     React.useEffect(()=>{
         setQuantitySelected((state.quantitySelected.filter(q => q.id === product.id))[0].selected);
     },[state.quantitySelected])
-
+    const productUrl = `/product=${(product.title).replace(/[^a-zA-Z0-9 ]/g, "")}/${product.id}`;
     return (
         <section className='product' id={product.id}>
-            <img src={product.thumbnail} title={product.title} alt={product.title} />
+            <Link to={productUrl}>
+                <img src={product.thumbnail} title={product.title} alt={product.title} />
+            </Link>
             <div className='titleAndOptions'>
-                <h2>{product.title}</h2>
+                <Link to={productUrl}>
+                    <h2>{product.title}</h2>    
+                </Link>
                 <p>Envío gratis</p>
                 <div className='productOptions'>
                     <button onClick={() => removeFromCart(product)}>Eliminar</button>

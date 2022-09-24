@@ -7,6 +7,8 @@ import ProductsByCategory from '@pages/ProductsByCategory';
 import ProductDetail from '@pages/ProductDetail';
 import Cart from '@pages/CartPage';
 import NotFound from '@pages/NotFound';
+import Login from '@pages/Login';
+import SignUp from '@pages/SignUp';
 
 import AppContext from '@context/AppContext';
 import useInitialState from '@hooks/useInitialState';
@@ -19,6 +21,8 @@ const App = () =>{
             <BrowserRouter>
                 <Routes>
                     <Route exact path="/" element={<Home/>} />
+                    <Route exact path='/login' element={<Login/>}/>
+                    <Route exact path='/signup' element={<SignUp/>}/>
                     <Route exact path="/categories" element={<Categories/>} />
                     <Route exact path="/category=:categoryName/:categoryId" element={<ProductsByCategory/>} />
                     <Route exact path="/product=:productName/:productId" element={<ProductDetail/>} />

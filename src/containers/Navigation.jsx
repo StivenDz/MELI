@@ -55,7 +55,7 @@ const Navigation = () => {
                     <img src={add} alt="" title="COMBO LOYALTV L6" />
                     <div>
                         <Link to="#">Crear tu cuenta</Link>
-                        <Link to="#">Ingresa</Link>
+                        <Link to="/login">Ingresa</Link>
                         <Link to="#">Mis compras</Link>
                         <div className="cart">
                             {state.cart.length > 0 && <span>{state.cart.length}</span>}   
