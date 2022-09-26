@@ -4,8 +4,8 @@ let Cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart'
 let QuantitySelected = localStorage.getItem('quantitySelected') ? JSON.parse(localStorage.getItem('quantitySelected')) : [];
 
 const initialState = {
-    cart: [],
-    quantitySelected: [],
+    cart: Cart, //[]
+    quantitySelected: QuantitySelected, //[]
     favorites: [],
     quantity: [],
     total:0,
