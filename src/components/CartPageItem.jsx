@@ -12,7 +12,7 @@ const CartPageItem = ({product}) => {
     React.useEffect(()=>{
         setQuantitySelected((state.quantitySelected.filter(q => q.id === product.id))[0].selected);
     },[state.quantitySelected])
-    const productUrl = `/product=${(product.title).replace(/[^a-zA-Z0-9 ]/g, "")}/${product.id}`;
+    const productUrl = `/product=${(product.title).replace(/[^a-zA-Z0-9 ]/g, "")}/c=${product.category_id}/aq=${product.available_quantity}/${product.id}`;
     return (
         <section className='product' id={product.id}>
             <Link to={productUrl}>

@@ -14,21 +14,21 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 initializeFirebaseService();
 
 //test service functions
-getUser();
-getUsers();
-getSpecificUserByEmail()
-  .then(res => console.log(res))
-  .catch(err => console.log("err executing getSpecificUserByEmail"));
-insertNewUser({
-  email: "stivendiazh@gmail.com",
-  password: "alexa123",
-  username: "alexa"
-})
-insertNewUser({
-  email: "alexa@gmail.com",
-  password: "alexa123",
-  username: "alexa"
-})
+// getUser();
+// getUsers();
+// getSpecificUserByEmail()
+//   .then(res => console.log(res))
+//   .catch(err => console.log("err executing getSpecificUserByEmail"));
+// insertNewUser({
+//   email: "stivendiazh@gmail.com",
+//   password: "alexa123",
+//   username: "alexa"
+// })
+// insertNewUser({
+//   email: "alexa@gmail.com",
+//   password: "alexa123",
+//   username: "alexa"
+// })
 
 library.add(fas, far);
 const root = ReactDOM.createRoot(document.getElementById('root'));

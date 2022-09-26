@@ -125,6 +125,10 @@ body {
     justify-content: flex-end;
     align-items: center;
     margin-top: 5px; }
+    @media screen and (max-width: 1193px) {
+      .navigation > section:last-child > div {
+        justify-content: space-between;
+        padding: 0 15px 0 0; } }
     .navigation > section:last-child > div > a {
       text-decoration: none;
       font-size: 13px;
@@ -560,7 +564,7 @@ body {
       position: relative; }
 
 .loginMain {
-  height: calc(100vh - (56px) - 73px);
+  min-height: calc(100vh - (56px) - 73px);
   position: relative;
   width: 100%; }
   .loginMain .backYellow {
@@ -570,27 +574,107 @@ body {
     background: #fff159;
     border-bottom: 1px solid #d9d9d9; }
   .loginMain > form {
-    position: absolute;
+    position: relative;
     z-index: 5;
     width: 424px;
     height: 417px;
     background: #fff;
-    top: 30px;
+    top: -150px;
     left: 50%;
     transform: translate(-50%);
     border-radius: 6px;
     padding: 2rem 4rem 0;
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    margin-bottom: 100px; }
+    .loginMain > form > span {
+      position: relative;
+      top: -13px;
+      color: #f04449;
+      font-weight: 600;
+      font-size: 12px; }
     .loginMain > form h1 {
       font-size: 24px;
       font-weight: 500;
       color: rgba(0, 0, 0, 0.9);
       margin: 16px 0;
       line-height: 1.25; }
-    .loginMain > form p {
+    .loginMain > form > p {
       font-size: 13px;
-      font-weight: 400; }
+      font-weight: 400;
+      margin-bottom: 5px; }
+    .loginMain > form .invalidText {
+      color: #f04449; }
+    .loginMain > form .invalidInput {
+      border: 1px solid #f04449;
+      box-shadow: none; }
+      .loginMain > form .invalidInput:focus {
+        outline: 2px solid transparent !important; }
+    .loginMain > form .spinner {
+      position: absolute;
+      color: #3483fa;
+      color: #fff;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotate 1s linear infinite; }
+    .loginMain > form .loadingBackground {
+      background: #79a9f1;
+      color: #00000000;
+      cursor: wait !important; }
+      .loginMain > form .loadingBackground:hover {
+        background: #79a9f1; }
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg); }
+  100% {
+    transform: translate(-50%, -50%) rotate(0); } }
+    .loginMain > form > div {
+      margin: 5px 0 14px;
+      padding: 2px 1px;
+      border-radius: 16px;
+      border: 0.0625rem solid #e7e7e7;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: normal;
+      line-height: 1.67;
+      max-width: 13.625rem;
+      text-overflow: ellipsis;
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      display: -webkit-inline-flex;
+      display: inline-flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      height: 1.75rem; }
+      .loginMain > form > div > p {
+        max-width: 13.625rem;
+        overflow-x: hidden;
+        padding: 0.1875rem 0;
+        text-align: left;
+        text-overflow: ellipsis; }
+      .loginMain > form > div svg {
+        background-color: rgba(0, 0, 0, 0.07);
+        color: rgba(0, 0, 0, 0.9);
+        border-radius: 50%;
+        padding: 6px; }
+      .loginMain > form > div > a {
+        text-decoration: none;
+        border-radius: 50%;
+        color: rgba(0, 0, 0, 0.9);
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 24px;
+        width: 25px; }
+        .loginMain > form > div > a:hover {
+          background-color: rgba(0, 0, 0, 0.07); }
     .loginMain > form input,
     .loginMain > form button {
       height: 48px;
@@ -599,7 +683,14 @@ body {
       border: none;
       outline: none;
       box-shadow: 0 0 0 1px #00000040;
-      margin-bottom: 18px; }
+      margin-bottom: 18px;
+      position: relative; }
+    .loginMain > form input {
+      padding: 0.8125em 0.75em; }
+      .loginMain > form input[type="password"] {
+        margin-bottom: 25px; }
+      .loginMain > form input:focus {
+        outline: 2px solid #3483fa; }
     .loginMain > form button {
       color: #fff;
       background: #3483fa;
@@ -608,7 +699,7 @@ body {
       margin-bottom: 8px; }
       .loginMain > form button:hover {
         background: #1668e4; }
-    .loginMain > form a {
+    .loginMain > form > a {
       margin-bottom: 8px;
       color: #3483fa;
       text-decoration: none;
@@ -618,6 +709,12 @@ body {
       height: 48px;
       line-height: 48px;
       padding: 0 24px; }
+    .loginMain > form > .forgotPassword {
+      border-radius: 0.375em;
+      transition: background .3s;
+      margin-top: 7px; }
+      .loginMain > form > .forgotPassword:hover {
+        background: rgba(65, 137, 230, 0.253); }
   .loginMain .problemToAccess {
     border-top: 1px solid rgba(0, 0, 0, 0.07);
     left: 50%;
@@ -688,6 +785,191 @@ body {
   .loginFooter p {
     color: rgba(0, 0, 0, 0.55);
     font-size: 12px; }
+
+.signUpLogin {
+  height: calc(56px);
+  background: #fff159;
+  padding: 0 0 0 10%;
+  display: flex; }
+  @media screen and (max-width: 400px) {
+    .signUpLogin {
+      padding-left: 5px; } }
+  .signUpLogin a {
+    height: 100%;
+    display: flex;
+    padding-top: 10px; }
+    .signUpLogin a img {
+      height: 34px;
+      width: 134px;
+      position: relative; }
+
+.signUpMain {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: calc(100vh - 56px); }
+  @media screen and (max-width: 768px) {
+    .signUpMain {
+      background-color: #fff; } }
+  .signUpMain form {
+    min-height: 505px;
+    width: 536px;
+    background: #fff;
+    padding: 48px;
+    box-shadow: 0 1px 2px 0 #00000026;
+    border-radius: 6px;
+    margin-top: 70px; }
+    @media screen and (max-width: 768px) {
+      .signUpMain form {
+        margin-top: 0; } }
+    .signUpMain form.isValidating {
+      background: none;
+      box-shadow: none;
+      margin-top: 30px;
+      position: relative; }
+      @media screen and (max-width: 768px) {
+        .signUpMain form.isValidating {
+          margin-top: 0; } }
+      .signUpMain form.isValidating > .contentForm {
+        width: 424px;
+        height: 373px;
+        background: #fff;
+        padding: 64px;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px 0 #00000026;
+        position: relative; }
+        @media screen and (max-width: 520px) {
+          .signUpMain form.isValidating > .contentForm {
+            width: 100%;
+            box-shadow: none; } }
+        @media screen and (max-width: 500px) {
+          .signUpMain form.isValidating > .contentForm {
+            padding: 10px; } }
+        .signUpMain form.isValidating > .contentForm h1 {
+          font-size: 24px;
+          font-weight: 600; }
+        .signUpMain form.isValidating > .contentForm p {
+          font-weight: 400;
+          line-height: 1.25rem;
+          margin-top: 10px;
+          font-size: 14px;
+          color: rgba(0, 0, 0, 0.9); }
+        .signUpMain form.isValidating > .contentForm input {
+          margin-top: 23px;
+          width: 100%;
+          height: 48px;
+          align-items: center;
+          background-color: #fff;
+          -webkit-border-radius: 0.375em;
+          border-radius: 0.375em;
+          -webkit-box-shadow: 0 0 0 1px #00000040;
+          box-shadow: 0 0 0 1px #00000040;
+          display: -webkit-flex;
+          display: flex;
+          font-size: 16px;
+          min-height: 48px;
+          outline: none;
+          border: none;
+          padding: 13px 12px; }
+          .signUpMain form.isValidating > .contentForm input:focus {
+            outline: 2px solid #3483fa; }
+        .signUpMain form.isValidating > .contentForm button {
+          height: 48px;
+          width: 100%;
+          border: none;
+          outline: none;
+          border-radius: 0.375em;
+          position: relative;
+          margin-top: 40px;
+          background: #3483fa;
+          color: #fff;
+          font-weight: 500;
+          transition: background .4s; }
+          .signUpMain form.isValidating > .contentForm button:hover {
+            background: #1668e4; }
+          .signUpMain form.isValidating > .contentForm button[disabled] {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-color: transparent;
+            color: rgba(0, 0, 0, 0.25);
+            cursor: default;
+            font-weight: 600; }
+    @media screen and (max-width: 425px) {
+      .signUpMain form {
+        padding: 15px; } }
+    @media screen and (max-width: 768px) {
+      .signUpMain form {
+        width: 100%;
+        box-shadow: none; } }
+    .signUpMain form h1 {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .signUpMain form > p {
+      font-size: 15px;
+      font-weight: 400;
+      margin: 16px 0 20px; }
+    .signUpMain form > section {
+      padding: 0 16px; }
+      .signUpMain form > section.current {
+        box-shadow: 0 8px 16px 0 #0000001a;
+        border-radius: 6px;
+        min-height: 90px;
+        display: flex;
+        align-items: center; }
+        @media screen and (max-width: 500px) {
+          .signUpMain form > section.current div {
+            flex-wrap: wrap; } }
+      .signUpMain form > section > div {
+        padding: 18px 0;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        position: relative;
+        width: 100%; }
+        .signUpMain form > section > div button {
+          padding: 6px 12px;
+          font-size: 13px;
+          background: #3483fa;
+          border: none;
+          outline: none;
+          color: #fff;
+          border-radius: 5px;
+          position: absolute;
+          right: 12px;
+          transition: .5s; }
+          .signUpMain form > section > div button:hover {
+            background: #1668e4; }
+          @media screen and (max-width: 495px) {
+            .signUpMain form > section > div button {
+              position: relative;
+              left: 50%;
+              transform: translate(-50%); } }
+        .signUpMain form > section > div > div {
+          height: 40px;
+          width: 40px;
+          font-size: 16px;
+          background-color: #fff;
+          border: 1px solid rgba(0, 0, 0, 0.07);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+          .signUpMain form > section > div > div svg {
+            height: 18px;
+            width: 26px;
+            color: #3483fa; }
+        .signUpMain form > section > div > section {
+          padding-right: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between; }
+          .signUpMain form > section > div > section p {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.9); }
+          .signUpMain form > section > div > section span {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.55); }
 
 .categories {
   padding: 0 15px 32px;
@@ -785,6 +1067,10 @@ body {
           display: block;
           text-decoration: none;
           color: black; }
+          .productList > div > .productItem > .content a figure {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 13px; }
           @media screen and (max-width: 730px) {
             .productList > div > .productItem > .content a p {
               max-height: 50px;
@@ -793,6 +1079,19 @@ body {
             .productList > div > .productItem > .content a p {
               font-size: 13px;
               max-height: 62px; } }
+        .productList > div > .productItem > .content p.shipping {
+          font-weight: 600;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1;
+          margin-top: 15px;
+          color: #00a650; }
+          .productList > div > .productItem > .content p.shipping > span {
+            margin-left: 5px;
+            display: inline-flex;
+            gap: 3px;
+            font-weight: 800;
+            font-style: italic; }
         .productList > div > .productItem > .content a > div {
           display: flex;
           width: 400px;
@@ -806,13 +1105,23 @@ body {
               width: 100%; } }
           .productList > div > .productItem > .content a > div > span {
             font-size: 25px;
-            font-weight: 500; }
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px; }
             @media screen and (max-width: 600px) {
               .productList > div > .productItem > .content a > div > span {
                 font-size: 20px; } }
             @media screen and (max-width: 400px) {
               .productList > div > .productItem > .content a > div > span {
                 font-size: 18px; } }
+            .productList > div > .productItem > .content a > div > span p {
+              color: #00a650;
+              display: -webkit-flex;
+              display: flex;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 1; }
           .productList > div > .productItem > .content a > div > .ratingContainer {
             display: flex;
             align-items: center;
@@ -824,7 +1133,8 @@ body {
               font-size: 13px; }
             .productList > div > .productItem > .content a > div > .ratingContainer span {
               display: none; }
-        .productList > div > .productItem > .content .addToCart, .productList > div > .productItem > .content .removeFromCart {
+        .productList > div > .productItem > .content .addToCart,
+        .productList > div > .productItem > .content .removeFromCart {
           width: 200px;
           padding: 10px 0;
           border: none;
@@ -833,11 +1143,13 @@ body {
           color: #3483fa;
           background: rgba(65, 137, 230, 0.15); }
           @media screen and (max-width: 600px) {
-            .productList > div > .productItem > .content .addToCart, .productList > div > .productItem > .content .removeFromCart {
+            .productList > div > .productItem > .content .addToCart,
+            .productList > div > .productItem > .content .removeFromCart {
               font-size: 13px;
               width: 150px; } }
           @media screen and (max-width: 310px) {
-            .productList > div > .productItem > .content .addToCart, .productList > div > .productItem > .content .removeFromCart {
+            .productList > div > .productItem > .content .addToCart,
+            .productList > div > .productItem > .content .removeFromCart {
               font-size: 11px;
               width: 120px; } }
         .productList > div > .productItem > .content .removeFromCart {

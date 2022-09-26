@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PaymentMethodItem = ({props}) => {
     return ( 
@@ -6,7 +7,7 @@ const PaymentMethodItem = ({props}) => {
             <img src={props.img} alt="" />
             <div>
                 <p>{props.text}</p>
-                <a href={props.link}>Ver más</a>
+                <Link to={props.link}>Ver más</Link>
             </div>
         </div>
      );

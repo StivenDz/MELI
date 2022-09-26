@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { usePriceFormat } from '@hooks/usePriceFormat';
 import ProductRating from '@components/ProductRating';
 
-const ProductItem = ({ props }) => {
+const ProductItem = ({ props,category }) => {
     const { state, addToCart, removeFromCart } = React.useContext(AppContext);
     const [isFavorite, setIsFavorite] = React.useState("fa-regular fa-heart");
     const [isAddedToCart, setIsAddedToCart] = React.useState(
@@ -39,7 +39,7 @@ const ProductItem = ({ props }) => {
         setIsAddedToCart((state.cart).filter(item => item.id === props.id).length === 0 ? false : true);
     },[state.cart])
 
-    const productUrl = `/product=${(props.title).replace(/[^a-zA-Z0-9 ]/g, "")}/${props.id}`;
+    const productUrl = `/product=${(props.title).replace(/[^a-zA-Z0-9 ]/g, "")}/aq=${props.available_quantity}/c=${category}/${props.id}`;
 
     return (
         <motion.div className='productItem'>
@@ -57,13 +57,20 @@ const ProductItem = ({ props }) => {
                     <motion.p>{props.title}</motion.p>
                 </Link>
                 <Link to={productUrl}>
+                    {props?.original_price && <figure className='old_price'>$ {usePriceFormat(props.original_price)}</figure>}
                     <div>
-                        <motion.span>$ {usePriceFormat(props.price)}</motion.span>
+                        <motion.span>$ {usePriceFormat(props.price)} {props?.original_price && <p>{100 - (props.price * 100 / props.original_price).toFixed()} % OFF</p>}</motion.span>
                         <ProductRating id={props.id} />
                     </div>
+                    <span>
+                        {props?.installments && `en ${props.installments.quantity}x  $ ${usePriceFormat(props.installments.amount)}`}
+                    </span>
+                    {props?.shipping.free_shipping &&
+                        <p className='shipping'>Envío gratis
+                        {props.shipping.logistic_type === "fulfillment" && <span><FontAwesomeIcon icon="fa-solid fa-bolt"/>FULL</span>}
+                    </p>}
                 </Link>
-
-                {isAddedToCart ?
+                {/* {isAddedToCart ?
 
                     <motion.button
                         className='removeFromCart'
@@ -78,7 +85,7 @@ const ProductItem = ({ props }) => {
                     >
                         Agregar al carrito
                     </motion.button>
-                }
+                } */}
             </motion.div>
         </motion.div>
     );

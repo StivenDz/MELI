@@ -25,8 +25,8 @@ const App = () =>{
                     <Route exact path='/signup' element={<SignUp/>}/>
                     <Route exact path="/categories" element={<Categories/>} />
                     <Route exact path="/category=:categoryName/:categoryId" element={<ProductsByCategory/>} />
-                    <Route exact path="/product=:productName/:productId" element={<ProductDetail/>} />
-                    <Route exact path="/cart" element={isAuth ? <Cart/> : <Navigate replace to={"/"} />} />
+                    <Route exact path="/product=:productName/aq=:available_quantity/c=:categoryId/:productId" element={<ProductDetail/>} />
+                    <Route exact path="/cart" element={isAuth ? <Cart/> : <Navigate replace to={"/login"} />} />
                     <Route path="*" element={<NotFound/>} />
                 </Routes>
             </BrowserRouter>

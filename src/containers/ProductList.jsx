@@ -36,9 +36,8 @@ const ProductList = ({category}) => {
                             //     productItem:product
                             // })}
                         >
-
                         <ProductItem
-                           key={product.id} props={product}
+                           key={product.id} props={product} category={category || comp}
                         />
 
                     </motion.div>

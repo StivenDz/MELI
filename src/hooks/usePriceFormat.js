@@ -1,4 +1,5 @@
 export const usePriceFormat = (number) =>{
+    number = Number(number.toFixed());
     number = (number.toString()).split('');
     number.reverse();
     if(number.length > 3){
@@ -14,6 +15,5 @@ export const usePriceFormat = (number) =>{
     }
 
     number.reverse();
-    number.join(',');
-    return number;
+    return number.join('');
 }

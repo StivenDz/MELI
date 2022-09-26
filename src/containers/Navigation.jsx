@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 import logo from '@logos/nav_logo.png';
 import add from '@logos/nav_ads.webp';
@@ -13,7 +13,7 @@ const Navigation = () => {
     const {state} = React.useContext(AppContext);
     const [showCart,setShowCart] = React.useState(false);
     const [showCategories,setShowCategories] = React.useState(false);
-
+    const navigate = useNavigate();
     return (
         <>
             <header className="navigation">
@@ -24,7 +24,7 @@ const Navigation = () => {
                     <section>
                         <FontAwesomeIcon icon="fa-solid fa-location-dot" />
                         <div>
-                            <p>Enviar a</p>
+                            <p>Enviar a {state.isLogged && state.userData.username}</p>
                             <p>Santa Marta</p>
                         </div>
                     </section>
@@ -59,7 +59,7 @@ const Navigation = () => {
                         <Link to="#">Mis compras</Link>
                         <div className="cart">
                             {state.cart.length > 0 && <span>{state.cart.length}</span>}   
-                            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" onClick={()=>{setShowCart(!showCart)}} />
+                            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" onClick={()=>{!state.isLogged ? navigate("/login") : setShowCart(!showCart)}} />
                         </div>
                     </div>
                 </section>

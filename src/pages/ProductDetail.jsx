@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Navigation from '@containers/Navigation';
@@ -16,6 +16,7 @@ import AppContext from "@context/AppContext";
 
 const ProductDetail = () => {
     const { state, addToCart, removeFromCart } = React.useContext(AppContext);
+    const navigate = useNavigate();
     const initialState = {
         num:
             state.quantity.filter(q => (q.id === productId)).length > 0 ?
@@ -24,7 +25,7 @@ const ProductDetail = () => {
                 1,
         clickedQuantity: false
     }
-    const { productId } = useParams();
+    const { productId,categoryId,available_quantity } = useParams();
     const [productDetail, setProductDetail] = React.useState(null);
     const [selectedImage, setSelectedImage] = React.useState(null);
     const [seller, setSeller] = React.useState(null);
@@ -33,7 +34,6 @@ const ProductDetail = () => {
         (state.cart).filter(item => item.id === productId).length === 0 ? false : true
     );
     const API = `${process.env.BASE_URL}/items/${productId}`;
-
     React.useEffect(() => {
         axios.get(API)
             .then(res => {
@@ -42,7 +42,7 @@ const ProductDetail = () => {
                 document.title = `${res.data.title} | Mercado Libre`;
                 //console.log(res.data);
             })
-            .catch(err => console.log('error productDetail'));
+            .catch(err => console.log('error productDetail API'));
     }, []);
 
     React.useEffect(() => {
@@ -52,7 +52,7 @@ const ProductDetail = () => {
                     setSeller(res.data);
                     //console.log(res.data);
                 })
-                .catch(err => console.log("error productDetail"));
+                .catch(err => console.log("error productDetail seller_id"));
     }, [productDetail]);
 
     React.useEffect(() => {
@@ -89,6 +89,11 @@ const ProductDetail = () => {
     }
 
     const handleAddOrRemoveFromCart = (type, product) => {
+        if(!state.isLogged){
+            navigate('/login');
+            return
+        } 
+
         type === 'remove' ?
             (
                 removeFromCart(product),
@@ -96,7 +101,7 @@ const ProductDetail = () => {
             )
             :
             (
-                addToCart(product,quantitySelected.num),
+                addToCart(product,quantitySelected.num,available_quantity),
                 setIsAddedToCartBtn(true)
             )
     }
@@ -166,13 +171,13 @@ const ProductDetail = () => {
                                     {
                                         quantitySelected.clickedQuantity &&
                                         <Quantity
-                                            avilable={productDetail.available_quantity}
+                                            avilable={available_quantity && available_quantity}
                                             quantity={quantitySelected.num}
                                             productId={productId}
                                         />
                                     }
                                 </div>
-                                <p>({productDetail.available_quantity >= 100 ? "+99" : productDetail.available_quantity} disponibles)</p>
+                                <p>({available_quantity && available_quantity >= 100 ? "+99" : available_quantity} disponibles)</p>
                             </div>
 
                             <button className='buyNowButton'>Comprar ahora</button>

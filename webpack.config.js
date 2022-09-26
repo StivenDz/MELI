@@ -25,7 +25,19 @@ module.exports = {
 			'@hooks': path.join(__dirname, '/src/hooks/'),
 			'@context': path.join(__dirname, '/src/context/'),
 			'@service': path.join(__dirname, '/src/service/'),
-        }
+        },
+        fallback: {
+            "fs": false,
+            "tls": false,
+            "net": false,
+            "path": false,
+            "zlib": false,
+            "http": false,
+            "https": false,
+            "stream": false,
+            "crypto": false,
+            "crypto-browserify": require.resolve('crypto-browserify')
+          } 
     },
 
     module:{

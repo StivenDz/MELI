@@ -4,17 +4,34 @@ let Cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart'
 let QuantitySelected = localStorage.getItem('quantitySelected') ? JSON.parse(localStorage.getItem('quantitySelected')) : [];
 
 const initialState = {
-    cart: Cart,
-    quantitySelected: QuantitySelected,
+    cart: [],
+    quantitySelected: [],
     favorites: [],
     quantity: [],
     total:0,
-    isLogged:true  //working on it
+    isLogged:true,
+    userData:{username:null}
+    // isLogged:false,
+    // userData : null
 }
 
 const useInitialState = () => {
     const [state, setState] = React.useState(initialState);
-
+    // React.useEffect(()=>{
+    //     !state.isLogged ?
+    //         setState({
+    //             ...state,
+    //             cart:[],
+    //             quantitySelected:[]
+    //         })
+    //         :
+    //         setState({
+    //             ...state,
+    //             cart:Cart,
+    //             quantitySelected:QuantitySelected
+    //         })
+    // },[state.isLogged])
+    
     const quantitySelected = (productId, quantity) => {
         setState({
             ...state,
@@ -69,12 +86,12 @@ const useInitialState = () => {
             )
     }
 
-    const addToCart = (product, quantity = 1) => {
+    const addToCart = (product, quantity = 1, available_quantity = product.available_quantity) => {
         setState({
             ...state,
             cart: !((state.cart).includes(product)) ?
-                    (localStorage.setItem('cart', JSON.stringify([...state.cart, product])),
-                    [...state.cart, product]) : [...state.cart],
+                    (localStorage.setItem('cart', JSON.stringify([...state.cart, {...product,available_quantity:available_quantity}])),
+                    [...state.cart, {...product,available_quantity:available_quantity}]) : [...state.cart],
             quantitySelected: 
                 [...state.quantitySelected, { id: product.id, selected: quantity }]
         });
@@ -109,22 +126,24 @@ const useInitialState = () => {
 
 
     React.useEffect(()=>{
-        localStorage.setItem('quantitySelected', JSON.stringify(state.quantitySelected))
+        state.quantitySelected.length > 0 && localStorage.setItem('quantitySelected', JSON.stringify(state.quantitySelected))
     },[state.quantitySelected])
 
-    // const Auth = () =>{
-    //     setState({
-    //         ...state,
-    //         isLogged:true
-    //     })
-    // }
+    const Auth = (isAuth,userData) =>{
+        setState({
+            ...state,
+            isLogged:isAuth,
+            userData: isAuth ? {...userData} : null
+        })
+    }
 
     return {
         state,
         addToCart,
         removeFromCart,
         quantitySelected,
-        increaseOrDecreaseQuantity
+        increaseOrDecreaseQuantity,
+        Auth
     }
 }
 

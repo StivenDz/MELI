@@ -133,6 +133,12 @@
             justify-content: flex-end;
             align-items: center;
             margin-top: 5px;
+            @media screen and (max-width: 1193px){
+                &{
+                    justify-content: space-between;
+                    padding: 0 15px 0 0;
+                }
+            }
             & > a{
                 text-decoration: none;
                 font-size: 13px;

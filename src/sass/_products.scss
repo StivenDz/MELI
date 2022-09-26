@@ -1,4 +1,4 @@
-.productList{
+.productList {
     display: flex;
     padding: 40px 0;
     flex-direction: column;
@@ -6,7 +6,7 @@
     position: relative;
 
     //clicked productitem
-    .product{
+    .product {
         top: 100px !important;
         width: 100vw;
         height: calc(100vh - 100px);
@@ -14,11 +14,11 @@
         align-items: center;
         background: rgba(15, 15, 15, 0.397);
 
-        .productItem{
+        .productItem {
             height: 85%;
         }
 
-        .deleteItem{
+        .deleteItem {
             top: 60px;
             position: absolute;
             right: 90px;
@@ -28,11 +28,13 @@
             text-align: center;
             border-radius: 50%;
             color: #ff0000;
-            &:hover{
-                outline:1px solid rgba(63, 63, 63, 0.212);
+
+            &:hover {
+                outline: 1px solid rgba(63, 63, 63, 0.212);
             }
         }
-        .favorite{
+
+        .favorite {
             position: absolute;
             top: 20% !important;
             left: 30%;
@@ -43,10 +45,11 @@
         }
     }
 
-    & > div {
+    &>div {
         padding: 0 5vw;
         position: relative;
-        & > .productItem{
+
+        &>.productItem {
             display: flex;
             min-width: 100%;
             height: 240px;
@@ -55,17 +58,20 @@
             align-items: center;
             border-bottom: 1px solid rgba(15, 15, 15, 0.158);
             position: relative;
-    
-            &:nth-child(1){
+
+            &:nth-child(1) {
                 border-radius: 7px 7px 0 0;
             }
-            &:last-child{
+
+            &:last-child {
                 border-radius: 0 0 7px 7px;
             }
-            &:hover > .favorite{
+
+            &:hover>.favorite {
                 opacity: 1;
             }
-            & > .favorite{
+
+            &>.favorite {
                 position: absolute;
                 top: 15px;
                 right: 35px;
@@ -74,78 +80,127 @@
                 opacity: 0;
                 color: $blueDark;
             }
+
             & a {
                 display: flex;
                 min-width: 40%;
                 justify-content: center;
-                & > img{
+
+                &>img {
                     width: 100%;
                     object-fit: contain;
                     height: 200px;
                     cursor: pointer;
                 }
             }
-            & > .content{
+
+            &>.content {
                 cursor: pointer;
                 padding-right: 25px;
                 display: flex;
                 flex-direction: column;
                 gap: 15px;
-                a{
+
+                a {
                     display: block;
                     text-decoration: none;
                     color: black;
-                    p{
-                       @media screen and (max-width:730px){
-                          max-height: 50px;
-                          overflow: hidden;
-                       }
-                       @media screen and (max-width:600px){
-                           font-size: 13px;
-                           max-height: 62px;
-                       }
-   
-                   }
+
+                    figure {
+                        text-decoration: line-through;
+                        color: #999;
+                        font-size: 13px;
+                    }
+
+                    p {
+                        @media screen and (max-width:730px) {
+                            max-height: 50px;
+                            overflow: hidden;
+                        }
+
+                        @media screen and (max-width:600px) {
+                            font-size: 13px;
+                            max-height: 62px;
+                        }
+
+                    }
                 }
-                & a > div {
+                p.shipping {
+                    font-weight: 600;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1;
+                    margin-top: 15px;
+                    color: #00a650;
+                    & > span{
+                        margin-left: 5px;
+                        display: inline-flex;
+                        gap: 3px;
+                        font-weight: 800;
+                        font-style: italic;
+                    }
+                }
+                & a>div {
                     display: flex;
                     width: 400px;
                     align-items: center;
-                    justify-content: space-between ;
-                    @media screen and (max-width:760px){
+                    justify-content: space-between;
+
+                    @media screen and (max-width:760px) {
                         flex-direction: column-reverse;
                         align-items: flex-start;
                         gap: 5px;
                         width: 100%;
                     }
-                    & > span{
+
+                    &>span {
                         font-size: 25px;
                         font-weight: 500;
-                        @media screen and (max-width:600px){
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        @media screen and (max-width:600px) {
                             font-size: 20px;
                         }
-                        @media screen and (max-width:400px){
+
+                        @media screen and (max-width:400px) {
                             font-size: 18px;
+                        }
+
+                        p {
+                            color: #00a650;
+                            display: -webkit-flex;
+                            display: flex;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 1;
                         }
                     }
 
-                    & >.ratingContainer {
+                    
+
+                    &>.ratingContainer {
                         display: flex;
                         align-items: center;
                         gap: 15px;
-                        .stars{
+
+                        .stars {
                             color: $blueStandar;
                             display: flex;
                             gap: 3px;
                             font-size: 13px;
                         }
-                        span{
+
+                        span {
                             display: none;
                         }
-                    } 
+                    }
 
-                } 
-                .addToCart,.removeFromCart{
+                }
+
+                .addToCart,
+                .removeFromCart {
                     width: 200px;
                     padding: 10px 0;
                     border: none;
@@ -153,21 +208,24 @@
                     border-radius: 4px;
                     color: $blueStandar;
                     background: $blueLigth;
-                    @media screen and (max-width:600px){
+
+                    @media screen and (max-width:600px) {
                         font-size: 13px;
                         width: 150px;
                     }
-                    @media screen and (max-width:310px){
+
+                    @media screen and (max-width:310px) {
                         font-size: 11px;
                         width: 120px;
                     }
                 }
-                .removeFromCart{
+
+                .removeFromCart {
                     color: $redDark;
                     background: $redLigth;
                 }
             }
         }
 
-    } 
+    }
 }
