@@ -21,8 +21,9 @@ initializeFirebaseService();
 //   .catch(err => console.log("err executing getSpecificUserByEmail"));
 // insertNewUser({
 //   email: "stivendiazh@gmail.com",
-//   password: "alexa123",
-//   username: "alexa"
+//   password: "123456789",
+//   username: "stiven",
+//   phone: "+57 3003779033"
 // })
 // insertNewUser({
 //   email: "alexa@gmail.com",

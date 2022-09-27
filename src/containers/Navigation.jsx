@@ -54,7 +54,7 @@ const Navigation = () => {
                 <section>
                     <img src={add} alt="" title="COMBO LOYALTV L6" />
                     <div>
-                        <Link to="#">Crear tu cuenta</Link>
+                        <Link to="/signup">Crear tu cuenta</Link>
                         <Link to="/login">Ingresa</Link>
                         <Link to="#">Mis compras</Link>
                         <div className="cart">

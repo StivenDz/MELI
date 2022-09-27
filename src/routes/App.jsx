@@ -16,13 +16,17 @@ import useInitialState from '@hooks/useInitialState';
 const App = () =>{
     const initialState = useInitialState();
     const isAuth = initialState.state.isLogged;
+    const isValidatingEmail = initialState.state.signup.vEmail.isValidating;
+    const validatedEmail = initialState.state.signup.vEmail.validated;
     return (
         <AppContext.Provider value={initialState}>
             <BrowserRouter>
                 <Routes>
                     <Route exact path="/" element={<Home/>} />
-                    <Route exact path='/login' element={<Login/>}/>
-                    <Route exact path='/signup' element={<SignUp/>}/>
+                    <Route exact path='/login' element={!isAuth ? <Login/> :  <Navigate replace to={"/"} />}/>
+                    <Route exact path='/signup' element={!isAuth ? <SignUp/> :  <Navigate replace to={"/"} />}/>
+                    <Route exact path='/signup/email-validation/:codehashed' element={!isAuth && isValidatingEmail ? <SignUp/> :  <Navigate replace to={"/signup"} />}/>
+                    <Route exact path='/signup/email-validation/validated=:bool' element={!isAuth && validatedEmail ? <SignUp/> :  <Navigate replace to={"/signup"} />}/>
                     <Route exact path="/categories" element={<Categories/>} />
                     <Route exact path="/category=:categoryName/:categoryId" element={<ProductsByCategory/>} />
                     <Route exact path="/product=:productName/aq=:available_quantity/c=:categoryId/:productId" element={<ProductDetail/>} />

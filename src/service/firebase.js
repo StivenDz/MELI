@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, collection, getDoc,getDocs,query,where,limit,setDoc,addDoc  } from 'firebase/firestore';
+import bcrypt from 'bcryptjs';
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_KEY,
@@ -34,7 +35,7 @@ export const comparePasswords = async (id,password) =>{
     await getDoc(user)
         .then(res => {
             //console.log({id:res.id,...res.data()});
-            validPassword = res.data().password === password;
+            validPassword = bcrypt.compareSync(password,res.data().password)
         })
         .catch(err => console.log("error in service - comparePasswords"))
     return validPassword;
@@ -54,7 +55,7 @@ export const getUsers = () =>{
 }
 
 export const getSpecificUserByEmail = async (email = "stivendiazh@gmail.com") =>{
-    let result = null;
+    let result = false;
 
     const db = getFirestore();
     const queryResult = query(
@@ -77,8 +78,11 @@ export const getSpecificUserByEmail = async (email = "stivendiazh@gmail.com") =>
     return result
 }
 
-export const insertNewUser = async ({email,password,username}) =>{
+export const insertNewUser = async ({email,password,username,phone = null}) =>{
     let result = null;
+    bcrypt.hash(password, 13, (err, hash)=> {
+        password = hash;
+    });
     const db = getFirestore();
     await getSpecificUserByEmail(email)
         .then(res => result = res)
@@ -88,7 +92,8 @@ export const insertNewUser = async ({email,password,username}) =>{
         await addDoc(collection(db, "users"), {
             email,
             password,
-            username
+            username,
+            phone
         })
         :
         console.log("this user already exist");

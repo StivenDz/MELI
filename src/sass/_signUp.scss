@@ -21,6 +21,15 @@
     }
 }
 
+.yellowBack {
+    background-color: #fff159;
+    display: block;
+    width: 100%;
+    height: 11.25rem;
+    position: absolute;
+    top: 56px;
+}
+
 .signUpMain {
     position: relative;
     width: 100%;
@@ -31,6 +40,8 @@
     @include responsive(768px,
         $properties: (background-color),
         $values: (#fff));
+
+
 
     form {
         min-height: 505px;
@@ -44,7 +55,12 @@
         @include responsive(768px,
             $properties: (margin-top),
             $values: (0));
-
+        & .validatedIcon{
+            color: #00a650;
+            position: absolute;
+            left: 25px;
+            top: 42px;
+        }
         &.isValidating {
             background: none;
             box-shadow: none;
@@ -57,7 +73,7 @@
 
             &>.contentForm {
                 width: 424px;
-                height: 373px;
+                min-height: 373px;
                 background: #fff;
                 padding: 64px;
                 border-radius: 6px;
@@ -65,22 +81,40 @@
                 position: relative;
 
                 @include responsive(520px,
-                $properties: (width,box-shadow),
-                $values: (100%,none));
+                    $properties: (width, box-shadow),
+                    $values: (100%, none));
 
                 @include responsive(500px,
-                $properties: (padding),
-                $values: (10px));
+                    $properties: (padding),
+                    $values: (10px));
 
                 h1 {
                     font-size: 24px;
                     font-weight: 600;
+                    margin-bottom: 10px;
+                }
+
+                .numberInputsContainer {
+                    display: flex;
+                    justify-content: center;
+                    gap: 8px;
+
+                    &>.numberInput {
+                        width: 40px;
+                        height: 48px;
+                        text-align: center;
+                        -moz-appearance: textfield;
+
+                        &::-webkit-inner-spin-button,
+                        &::-webkit-outer-spin-button {
+                            -webkit-appearance: none;
+                        }
+                    }
                 }
 
                 p {
                     font-weight: 400;
                     line-height: 1.25rem;
-                    margin-top: 10px;
                     font-size: 14px;
                     color: rgba(0, 0, 0, .9);
                 }
@@ -102,12 +136,13 @@
                     outline: none;
                     border: none;
                     padding: 13px 12px;
-                    &:focus{
+
+                    &:focus {
                         outline: 2px solid $blueStandar;
                     }
                 }
 
-                button{
+                button {
                     height: 48px;
                     width: 100%;
                     border: none;
@@ -119,18 +154,148 @@
                     color: #fff;
                     font-weight: 500;
                     transition: background .4s;
-                    &:hover{
+
+                    &:hover {
                         background: $blueStandarHover;
                     }
+
                     // left: 50%;
                     // top: 30%;
                     // transform: translate(-50%,-50%);
-                    &[disabled]{
-                        background-color: rgba(0,0,0,.1);
+                    &[disabled] {
+                        background-color: rgba(0, 0, 0, .1);
                         border-color: transparent;
-                        color: rgba(0,0,0,.25);
+                        color: rgba(0, 0, 0, .25);
                         cursor: default;
                         font-weight: 600;
+                    }
+                }
+
+                .invalidText {
+                    color: #f04449;
+                }
+
+                .invalidInput {
+                    border: 1px solid #f04449;
+                    box-shadow: none;
+
+                    &:focus {
+                        outline: 2px solid transparent !important;
+                    }
+                }
+
+                .spinner {
+                    position: absolute;
+                    color: $blueStandar;
+                    color: #fff;
+                    height: 20px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    animation: rotate 1s linear infinite;
+                }
+
+                .loadingBackground {
+                    background: #79a9f1;
+                    color: #00000000 !important;
+                    cursor: wait !important;
+                }
+
+                @keyframes rotate {
+                    0% {
+                        transform: translate(-50%, -50%) rotate(360deg);
+                    }
+
+                    100% {
+                        transform: translate(-50%, -50%) rotate(0);
+                    }
+                }
+
+                &>span {
+                    position: absolute;
+                    color: #f04449;
+                    font-weight: 600;
+                    font-size: 12px;
+
+                    &.errorInValidationCode {
+                        text-align: center;
+                        transform: translate(-50%);
+                        top: 66%;
+                        left: 50%;
+                    }
+
+                    svg {
+                        margin-right: 5px;
+                    }
+
+                    a {
+                        display: block;
+                        text-decoration: none;
+                        color: $blueStandar;
+                        margin-left: 17px;
+                    }
+                }
+            }
+
+            &>.congratsContainer {
+                @extend .contentForm;
+
+                &>img {
+                    width: 100%;
+                    height: 160px;
+                }
+
+                h1 {
+                    font-size: 22px;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+
+                span {
+                    color: #00a650;
+                    font-size: 15px;
+                    position: relative;
+                    display: block;
+                    text-align: center;
+                    line-height: 1.25rem;
+                    margin: 0;
+                    font-weight: 500;
+                    width: 100%;
+                    word-break: break-word;
+                    svg{
+                        margin-left: 5px;
+                    }
+                }
+
+                p {
+                    font-weight: 400;
+                    line-height: 1.25rem;
+                    font-size: 13px;
+                    color: rgba(0, 0, 0, .9);
+                    text-align: center;
+                    margin: 1rem 0 1.5rem;
+                }
+
+                & > a{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    height: 48px;
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    border-radius: 0.375em;
+                    position: relative;
+                    margin-top: 40px;
+                    background: $blueStandar;
+                    color: #fff;
+                    font-weight: 500;
+                    transition: background .4s;
+
+                    &:hover {
+                        background: $blueStandarHover;
                     }
                 }
             }
