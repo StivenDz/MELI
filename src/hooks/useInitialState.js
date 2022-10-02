@@ -1,5 +1,8 @@
 import React from 'react';
-import congratsIcon from '@icons/validation.svg'
+import congratsIcon from '@icons/validation.svg';
+import congratsUsernameIcon from '@icons/UsernameValidation.svg';
+import congratsPhone from '@icons/PhoneValidation.svg';
+import congratsPass from '@icons/PassValidation.svg';
 
 let Cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 let QuantitySelected = localStorage.getItem('quantitySelected') ? JSON.parse(localStorage.getItem('quantitySelected')) : [];
@@ -7,15 +10,17 @@ let QuantitySelected = localStorage.getItem('quantitySelected') ? JSON.parse(loc
 const initialState = {
     signup: {
         validating: false,
+        allValidated:false,
+        showCongratsView:false,
         vEmail: {
             current: true,
             isValidating: false,
             validated: false,
-            congrats:{
-                image:congratsIcon,
-                title:"Validamos tu e-mail",
-                text:"Usaremos este e-mail si necesitas recuperar el acceso a tu cuenta y para informarte sobre temas de seguridad.",
-                buttonText:"Continuar"
+            congrats: {
+                image: congratsIcon,
+                title: "Validamos tu e-mail",
+                text: "Usaremos este e-mail si necesitas recuperar el acceso a tu cuenta y para informarte sobre temas de seguridad.",
+                buttonText: "Continuar"
             },
             props: {
                 title: "Ingresa tu e-mail",
@@ -44,17 +49,54 @@ const initialState = {
         vUsername: {
             current: false,
             isValidating: false,
-            validated: false
+            validated: false,
+            props: {
+                image: congratsUsernameIcon,
+                title: "Elige cómo quieres que te llamemos",
+                text: "Verán el nombre que elijas todas las personas que interactúen contigo en Mercado Libre y Mercado Pago.",
+                buttonText: "Continuar",
+                errorInput1: false,
+                errorInput2: false,
+                username: null
+            },
+
         },
         vPhone: {
             current: false,
             isValidating: false,
-            validated: false
+            validated: false,
+            props: {
+                image: congratsPhone,
+                error: false,
+                phone: null,
+                title: "Ingresa tu teléfono",
+                text: "Te enviaremos un código por SMS para confirmarlo. Con este teléfono podrás entrar a tu cuenta.",
+                text2: "Código de área + número.",
+                buttonText: "Enviar código por SMS"
+            }
         },
         vPassword: {
             current: false,
             isValidating: false,
-            validated: false
+            validated: false,
+            props: {
+                error: false,
+                password: null,
+                errorText:"Las contraseñas no coinciden",
+                title:"Crea tu contraseña",
+                text:"Ingresa una contraseña segura que no uses en otras plataformas.",
+                buttonText:"Continuar",
+                label1:"Ingresa tu contraseña",
+                label2:"Confirma tu contraseña",
+                v1:"Mínimo 8 caracteres con letras y números.",
+                v2:"Mínimo 1 signo o símbolo como ?-!*$#.",
+                v3:"No incluyas tu nombre o apellido.",
+                v4:"Sin secuencias como 1234 o ABCD.",
+                v5:"Sin caracteres repetidos consecutivos como aa.",
+                v6:"Sin tu e-mail, ni “mercadolibre” o “mercadopago”.",
+                v7:"No incluyas la fecha de hoy.",
+                image:congratsPass
+            }
         },
     },
     cart: [], // Cart
@@ -85,7 +127,7 @@ const useInitialState = () => {
                 quantitySelected: QuantitySelected
             })
     }, [state.isLogged])
-    const addEmail = (email) =>{
+    const addEmail = (email) => {
         setState({
             ...state,
             signup: {
@@ -94,43 +136,116 @@ const useInitialState = () => {
                     ...state.signup.vEmail,
                     validation_props: {
                         ...state.signup.vEmail.validation_props,
-                        email:email
+                        email: email
                     }
                 }
             }
         })
     }
-    const errorInSignUp = (bool, type = "email") => {
-        type === "email" ?
-            setState({
-                ...state,
-                signup: {
-                    ...state.signup,
-                    vEmail: {
-                        ...state.signup.vEmail,
-                        props: {
-                            ...state.signup.vEmail.props,
-                            error: bool,
-                            isSubmitted: false
-                        }
+    const addUsername = (username) => {
+        setState({
+            ...state,
+            signup: {
+                ...state.signup,
+                vUsername: {
+                    ...state.signup.vUsername,
+                    props: {
+                        ...state.signup.vUsername.props,
+                        username: username
                     }
                 }
-            })
-            :
-            setState({
-                ...state,
-                signup: {
-                    ...state.signup,
-                    vEmail: {
-                        ...state.signup.vEmail,
-                        validation_props: {
-                            ...state.signup.vEmail.validation_props,
-                            error: bool,
-                            isSubmitted: false
-                        }
+            }
+        })
+    }
+    const addPhone = (phone) =>{
+        setState({
+            ...state,
+            signup: {
+                ...state.signup,
+                vPhone: {
+                    ...state.signup.vPhone,
+                    props: {
+                        ...state.signup.vPhone.props,
+                        phone: phone
                     }
                 }
-            })
+            }
+        })
+    }
+    const addPassword = (pass) =>{
+        setState({
+            ...state,
+            signup: {
+                ...state.signup,
+                vPassword: {
+                    ...state.signup.vPassword,
+                    props: {
+                        ...state.signup.vPassword.props,
+                        password: pass
+                    }
+                }
+            }
+        })
+    }
+    const allValidated = (bool) =>{
+        setState({
+            ...state,
+            signup:{
+                ...state.signup,
+                allValidated:bool,
+                validating:false,
+
+                vPassword:{
+                    ...state.signup.vPassword,
+                    validated:true,
+                    isValidating:false,
+                    current:false
+                }
+            }
+        })
+    }
+    const errorInSignUp = (bool, type = "email", inputNum = 1) => {
+        setState({
+            ...state,
+            signup: {
+                ...state.signup,
+                vEmail: {
+                    ...state.signup.vEmail,
+                    props: {
+                        ...state.signup.vEmail.props,
+                        error: type === "email" ? bool : false,
+                        isSubmitted: false
+                    },
+                    validation_props: {
+                        ...state.signup.vEmail.validation_props,
+                        error: type === "emailValidation" ? bool : false,
+                        isSubmitted: false
+                    }
+                },
+                vUsername: {
+                    ...state.signup.vUsername,
+                    props: {
+                        ...state.signup.vUsername.props,
+                        errorInput1: (type === "username" && (inputNum === 1 || inputNum === 3)) ? bool : false,
+                        errorInput2: (type === "username" && (inputNum === 2 || inputNum === 3)) ? bool : false
+                    }
+                },
+                vPhone: {
+                    ...state.signup.vPhone,
+                    props: {
+                        ...state.signup.vPhone.props,
+                        error: type === "phone" ? bool : false
+                    }
+                },
+                vPassword: {
+                    ...state.signup.vPassword,
+                    props: {
+                        ...state.signup.vPassword.props,
+                        error: type === "password" ? bool : false
+                    }
+                }
+            }
+        })
     }
 
     const isSubmitted = (bool, type = "email") => {
@@ -163,7 +278,37 @@ const useInitialState = () => {
                 }
             })
     }
-    const isValidating = (bool,validated = false) => {
+
+    const current = (type = "username") => {
+        setState({
+            ...state,
+            signup: {
+                ...state.signup,
+                validating: false,
+                vEmail: {
+                    ...state.signup.vEmail,
+                    isValidating: false,
+                    validated: true,
+                    current: false
+                },
+                vUsername: {
+                    ...state.signup.vUsername,
+                    current: type === "username" ? true : false,
+                    isValidating: (type === "phone" || type === "password") ? false : state.signup.vUsername.isValidating
+                },
+                vPhone: {
+                    ...state.signup.vPhone,
+                    current: type === "phone" ? true : false,
+                    isValidating: (type === "password") ? false : state.signup.vPhone.isValidating
+                },
+                vPassword: {
+                    ...state.signup.vPassword,
+                    current: type === "password" ? true : false
+                }
+            }
+        })
+    }
+    const isValidating = (bool, validated = false, type = "email") => {
         setState({
             ...state,
             signup: {
@@ -171,8 +316,23 @@ const useInitialState = () => {
                 validating: bool,
                 vEmail: {
                     ...state.signup.vEmail,
-                    isValidating: bool,
-                    validated:validated
+                    isValidating: type === "email" ? bool : false,
+                    validated: type === "email" ? validated : true
+                },
+                vUsername: {
+                    ...state.signup.vUsername,
+                    isValidating: type === "username" ? bool : false,
+                    validated: (type === "phone" || type === "password") ? true : (type === "email") ? false : validated
+                },
+                vPhone: {
+                    ...state.signup.vPhone,
+                    isValidating: type === "phone" ? bool : false,
+                    validated: (type === "password") ? true : (type === "email" || type === "username") ? false : validated
+                },
+                vPassword: {
+                    ...state.signup.vPassword,
+                    isValidating: type === "password" ? bool : false,
+                    validated: (type === "email" || type === "username" || type === "phone") ? false : validated
                 }
             }
         })
@@ -279,7 +439,11 @@ const useInitialState = () => {
         setState({
             ...state,
             isLogged: isAuth,
-            userData: isAuth ? { ...userData } : null
+            userData: isAuth ? { ...userData } : null,
+            signup:{
+                ...state.signup,
+                showCongratsView:true
+            }
         })
     }
 
@@ -293,7 +457,12 @@ const useInitialState = () => {
         isValidating,
         isSubmitted,
         errorInSignUp,
-        addEmail
+        addEmail,
+        current,
+        addUsername,
+        addPhone,
+        addPassword,
+        allValidated
     }
 }
 

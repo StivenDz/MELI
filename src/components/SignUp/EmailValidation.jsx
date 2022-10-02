@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppContext from '@context/AppContext';
 
-const Registration = ({props}) => {
-    const {isSubmitted,errorInSignUp,isValidating} = React.useContext(AppContext);
+const EmailValidation = ({props}) => {
+    const {isSubmitted,errorInSignUp,current} = React.useContext(AppContext);
+    const navigate = useNavigate();
     const validateLength = (e) =>{
         e.target.value.length > 0 ? 
         (
@@ -40,7 +41,10 @@ const Registration = ({props}) => {
         (!isFull && props.error) && errorInSignUp(false,"emailValidation");
             
     }
-
+    const emailValidated = () =>{
+        current();
+        navigate("/signup");
+    }
     return ( 
         <section className={!props?.validated ? 'contentForm' : "congratsContainer"}>
             {props?.image && <img src={props.image}/>}
@@ -75,10 +79,10 @@ const Registration = ({props}) => {
             </button>}
 
             {props?.validated &&
-                <Link onClick={() => isValidating(false,true)} to={"/signup"}>{props.buttonText}</Link>  
+                <button type="button" onClick={emailValidated}>{props.buttonText}</button>  
             }
         </section>
      );
 }
  
-export default Registration;
+export default EmailValidation;

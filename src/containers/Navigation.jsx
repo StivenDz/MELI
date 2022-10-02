@@ -24,7 +24,7 @@ const Navigation = () => {
                     <section>
                         <FontAwesomeIcon icon="fa-solid fa-location-dot" />
                         <div>
-                            <p>Enviar a {state.isLogged && state.userData.username}</p>
+                            <p>Enviar a {state.isLogged && state.userData.username.name}</p>
                             <p>Santa Marta</p>
                         </div>
                     </section>

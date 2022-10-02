@@ -25,6 +25,7 @@ module.exports = {
 			'@hooks': path.join(__dirname, '/src/hooks/'),
 			'@context': path.join(__dirname, '/src/context/'),
 			'@service': path.join(__dirname, '/src/service/'),
+            '@json':path.join(__dirname, '/src/JSON/')
         },
         fallback: {
             "fs": false,

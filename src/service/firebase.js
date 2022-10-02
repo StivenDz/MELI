@@ -88,13 +88,13 @@ export const insertNewUser = async ({email,password,username,phone = null}) =>{
         .then(res => result = res)
         .catch(err => console.log("err executing getSpecificUserByEmail"))
 
-    !result ?
+    !result &&
         await addDoc(collection(db, "users"), {
             email,
             password,
             username,
             phone
         })
-        :
-        console.log("this user already exist");
+        //:
+        //console.log("this user already exist");
 }
