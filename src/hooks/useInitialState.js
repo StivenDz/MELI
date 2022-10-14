@@ -1,8 +1,9 @@
 import React from 'react';
-import congratsIcon from '@icons/validation.svg';
+import congratsIcon from '@icons/Validation.svg';
 import congratsUsernameIcon from '@icons/UsernameValidation.svg';
 import congratsPhone from '@icons/PhoneValidation.svg';
 import congratsPass from '@icons/PassValidation.svg';
+import { getUser, updateCart } from '@service/firebase';
 
 let Cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 let QuantitySelected = localStorage.getItem('quantitySelected') ? JSON.parse(localStorage.getItem('quantitySelected')) : [];
@@ -10,8 +11,8 @@ let QuantitySelected = localStorage.getItem('quantitySelected') ? JSON.parse(loc
 const initialState = {
     signup: {
         validating: false,
-        allValidated:false,
-        showCongratsView:false,
+        allValidated: false,
+        showCongratsView: false,
         vEmail: {
             current: true,
             isValidating: false,
@@ -82,51 +83,102 @@ const initialState = {
             props: {
                 error: false,
                 password: null,
-                errorText:"Las contraseñas no coinciden",
-                title:"Crea tu contraseña",
-                text:"Ingresa una contraseña segura que no uses en otras plataformas.",
-                buttonText:"Continuar",
-                label1:"Ingresa tu contraseña",
-                label2:"Confirma tu contraseña",
-                v1:"Mínimo 8 caracteres con letras y números.",
-                v2:"Mínimo 1 signo o símbolo como ?-!*$#.",
-                v3:"No incluyas tu nombre o apellido.",
-                v4:"Sin secuencias como 1234 o ABCD.",
-                v5:"Sin caracteres repetidos consecutivos como aa.",
-                v6:"Sin tu e-mail, ni “mercadolibre” o “mercadopago”.",
-                v7:"No incluyas la fecha de hoy.",
-                image:congratsPass
+                errorText: "Las contraseñas no coinciden",
+                title: "Crea tu contraseña",
+                text: "Ingresa una contraseña segura que no uses en otras plataformas.",
+                buttonText: "Continuar",
+                label1: "Ingresa tu contraseña",
+                label2: "Confirma tu contraseña",
+                v1: "Mínimo 8 caracteres con letras y números.",
+                v2: "Mínimo 1 signo o símbolo como ?-!*$#.",
+                v3: "No incluyas tu nombre o apellido.",
+                v4: "Sin secuencias como 1234 o ABCD.",
+                v5: "Sin caracteres repetidos consecutivos como aa.",
+                v6: "Sin tu e-mail, ni “mercadolibre” o “mercadopago”.",
+                v7: "No incluyas la fecha de hoy.",
+                image: congratsPass
             }
         },
     },
-    cart: [], // Cart
-    quantitySelected: [], // QuantitySelected
+    cart: localStorage.getItem("uid") ? Cart : [],
+    quantitySelected: localStorage.getItem("uid") ? QuantitySelected : [],
     favorites: [],
     quantity: [],
     total: 0,
-    isLogged: false,
-    userData: null
-    // isLogged:true,
-    // userData:{username:null}
+    isLogged: localStorage.getItem("uid") ? true : false,
+    userData: localStorage.getItem("uid") ? {
+        username: {
+            name: null,
+            lastname: null
+        }
+    }
+        :
+        null
 }
 
 const useInitialState = () => {
     const [state, setState] = React.useState(initialState);
 
+    //getting user data
     React.useEffect(() => {
-        !state.isLogged ?
+        if (localStorage.getItem("uid")) {
+            getUser(localStorage.getItem("uid"))
+                .then(async (res) => {
+                    setState({
+                        ...state,
+                        isLogged: true,
+                        userData: { id: res.id, email: res.email, username: res.username },
+                        total: state.cart.map(product => (
+                            state.quantitySelected.filter(q => (
+                                product.id === q.id
+                            ))[0].selected * product.price
+                        )).reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+                    })
+                })
+                .catch(err => "err getting user")
+        }
+    }, [])
+
+    // save to localStorage the quantiitySelected
+    React.useEffect(() => {
+        state.quantitySelected.length > 0 && localStorage.setItem('quantitySelected', JSON.stringify(state.quantitySelected));
+
+        state.cart.length > 0 &&
             setState({
                 ...state,
-                cart: [],
-                quantitySelected: []
+                total: state.cart.map(product => (
+                    state.quantitySelected.filter(q => (
+                        product.id === q.id
+                    ))[0].selected * product.price
+                )).reduce((previousValue, currentValue) => previousValue + currentValue, 0)
             })
-            :
-            setState({
-                ...state,
-                cart: Cart,
-                quantitySelected: QuantitySelected
-            })
-    }, [state.isLogged])
+    }, [state.quantitySelected, state.cart])
+
+    React.useEffect(() => {
+        if(state.isLogged && (state.userData?.id || localStorage.getItem("uid"))){
+            updateCart(state.userData.id || localStorage.getItem("uid"), state.cart, state.quantitySelected)
+        }
+    }, [state.cart,state.quantitySelected])
+
+    // total reduce function && add to forestore
+    // React.useEffect(() => {
+    //     state.cart.length > 0 &&
+    //         setState({
+    //             ...state,
+    //             total: state.cart.map(product => (
+    //                 state.quantitySelected.filter(q => (
+    //                     product.id === q.id
+    //                 ))[0].selected * product.price
+    //             )).reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+    //         })
+
+    //     state.isLogged &&
+    //         state.cart.length > 0 ?
+    //             updateCart(localStorage.getItem("uid", state.cart, state.quantitySelected))
+    //             :
+    //             updateCart(state.userData.id)
+    // }, [state.quantitySelected, state.cart])
+
     const addEmail = (email) => {
         setState({
             ...state,
@@ -157,7 +209,7 @@ const useInitialState = () => {
             }
         })
     }
-    const addPhone = (phone) =>{
+    const addPhone = (phone) => {
         setState({
             ...state,
             signup: {
@@ -172,7 +224,7 @@ const useInitialState = () => {
             }
         })
     }
-    const addPassword = (pass) =>{
+    const addPassword = (pass) => {
         setState({
             ...state,
             signup: {
@@ -187,19 +239,19 @@ const useInitialState = () => {
             }
         })
     }
-    const allValidated = (bool) =>{
+    const allValidated = (bool) => {
         setState({
             ...state,
-            signup:{
+            signup: {
                 ...state.signup,
-                allValidated:bool,
-                validating:false,
+                allValidated: bool,
+                validating: false,
 
-                vPassword:{
+                vPassword: {
                     ...state.signup.vPassword,
-                    validated:true,
-                    isValidating:false,
-                    current:false
+                    validated: true,
+                    isValidating: false,
+                    current: false
                 }
             }
         })
@@ -357,7 +409,7 @@ const useInitialState = () => {
         })
     }
 
-    const increaseOrDecreaseQuantity = (type, available, id) => { //testing function
+    const increaseOrDecreaseQuantity = (type, available, id) => {
         let quantitySelected = (state.quantitySelected.filter(q => q.id === id))[0].selected
         type === "+" ?
             (
@@ -418,33 +470,29 @@ const useInitialState = () => {
         localStorage.setItem('quantitySelected', JSON.stringify(state.quantitySelected.filter(prod => prod.id != product.id)))
     }
 
-    React.useEffect(() => {
-        state.cart.length > 0 &
-            setState({
-                ...state,
-                total: state.cart.map(product => (
-                    state.quantitySelected.filter(q => (
-                        product.id === q.id
-                    ))[0].selected * product.price
-                )).reduce((previousValue, currentValue) => previousValue + currentValue, 0)
-            })
-    }, [state.quantitySelected, state.cart])
-
-
-    React.useEffect(() => {
-        state.quantitySelected.length > 0 && localStorage.setItem('quantitySelected', JSON.stringify(state.quantitySelected))
-    }, [state.quantitySelected])
-
-    const Auth = (isAuth, userData) => {
+    const Auth = (isAuth, { email, username,id }, login = false, cart = [], quantitySelected = []) => {
         setState({
             ...state,
             isLogged: isAuth,
-            userData: isAuth ? { ...userData } : null,
-            signup:{
+            userData: isAuth ? { email: email, username: username,id:id } : null,
+            signup: {
                 ...state.signup,
-                showCongratsView:true
-            }
+                showCongratsView: !login ? true : false
+            },
+            cart: cart,
+            quantitySelected: quantitySelected
         })
+    }
+
+    const Logout = () =>{
+        localStorage.clear();
+        setState({
+            ...state,
+            isLogged:false,
+            userData:null,
+            cart: [],
+            quantitySelected:[]
+        });
     }
 
     return {
@@ -462,7 +510,8 @@ const useInitialState = () => {
         addUsername,
         addPhone,
         addPassword,
-        allValidated
+        allValidated,
+        Logout
     }
 }
 

@@ -17,7 +17,7 @@ const Congrats = ({name}) => {
                     <FontAwesomeIcon icon="fa-solid fa-envelope" />
 
                 </div>
-                <p>Podrás iniciar sesión ingresando tu número e-mail y tu contraseña.</p>
+                <p>Podrás iniciar sesión ingresando tu e-mail y tu contraseña.</p>
             </section>
             <section>
                 <div>

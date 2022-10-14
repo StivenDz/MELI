@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from '@logos/nav_logo.png';
 
-import { getSpecificUserByEmail, comparePasswords } from '@service/firebase';
+import { getSpecificUserByEmail, comparePasswords,getUser } from '@service/firebase';
 import AppContext from '@context/AppContext';
 
 const Login = () => {
@@ -76,9 +76,18 @@ const Login = () => {
 
         const data = new FormData(form.current);
         comparePasswords(user.id, data.get("password"))
-            .then(res => {
-                Auth(res, user);
-                if (res) return navigate('/');
+            .then(async (res) => {
+                if (res) {
+                    await getUser(user.id)
+                        .then(async(res) =>{
+                            let cart = await res?.cart ? res.cart : [];
+                            let quantitySelected = await res?.quantitySelected ? res.quantitySelected : [];
+                            localStorage.setItem('quantitySelected', JSON.stringify(quantitySelected));
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            Auth(res,user,true,cart,quantitySelected);
+                        })
+                    return navigate('/');
+                }
 
                 setAvailableToSearch(false);
                 e.target.passButton.removeAttribute("disabled");

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, collection, getDoc,getDocs,query,where,limit,setDoc,addDoc  } from 'firebase/firestore';
+import { getFirestore, doc, collection, getDoc,getDocs,query,where,limit,setDoc,addDoc,updateDoc,deleteField} from 'firebase/firestore';
 import bcrypt from 'bcryptjs';
 
 const firebaseConfig = {
@@ -17,13 +17,16 @@ export const initializeFirebaseService = () => {
     return app;
 }
 
-export const getUser = (id = 'HQ5Qgw0YQ7qCiV7fJ2o1') => {
+export const getUser = async (id) => {
+    let result = null;
     const db = getFirestore();
     const user = doc(db, 'users', id);
 
-    getDoc(user)
-        .then(res => console.log({id:res.id,...res.data()}))
+    await getDoc(user)
+        .then(res => result = {id:res.id,...res.data()})
         .catch(err => console.log("error in service - getUser"))
+
+    return result;
 }
 
 export const comparePasswords = async (id,password) =>{
@@ -36,6 +39,7 @@ export const comparePasswords = async (id,password) =>{
         .then(res => {
             //console.log({id:res.id,...res.data()});
             validPassword = bcrypt.compareSync(password,res.data().password)
+            validPassword && localStorage.setItem("uid",res.id)
         })
         .catch(err => console.log("error in service - comparePasswords"))
     return validPassword;
@@ -53,7 +57,7 @@ export const getUsers = () =>{
         })
         .catch(err => console.log("error in service - getUsers"))
 }
-
+ 
 export const getSpecificUserByEmail = async (email = "stivendiazh@gmail.com") =>{
     let result = false;
 
@@ -79,7 +83,7 @@ export const getSpecificUserByEmail = async (email = "stivendiazh@gmail.com") =>
 }
 
 export const insertNewUser = async ({email,password,username,phone = null}) =>{
-    let result = null;
+    let result = null
     bcrypt.hash(password, 13, (err, hash)=> {
         password = hash;
     });
@@ -95,6 +99,14 @@ export const insertNewUser = async ({email,password,username,phone = null}) =>{
             username,
             phone
         })
-        //:
-        //console.log("this user already exist");
+            .then(res => localStorage.setItem("uid",res.id))
+            .catch(err => console.log("err inserting new user!"))
+}
+
+export const updateCart = (docId,cart = [],quantitySelected = []) =>{
+    const db = getFirestore()
+    updateDoc(doc(db, "users", docId),{
+        cart:cart === [] ? deleteField() : cart,
+        quantitySelected: quantitySelected === [] ? deleteField() : quantitySelected
+    })
 }

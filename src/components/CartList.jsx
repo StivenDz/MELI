@@ -24,7 +24,7 @@ const CartList = ({ showOrHideList }) => {
             transition={{ duration: .2 }}
         >
 
-            {state.cart.length > 0 ?
+            {state?.cart && state.cart.length > 0 ?
                 <>
                     {state.cart.map((product) => (
                         <CartItem item={product} key={product.id} />

@@ -2,6 +2,7 @@
     padding: 0 15px 32px;
     margin: 0 auto;
     max-width: 1200px;
+
     h1 {
         color: #4a4a4a;
         font-size: 22px;
@@ -9,10 +10,49 @@
         padding: 0;
         margin: 24px auto;
     }
-    section{
+
+    section {
         width: 100%;
         background: #fff;
         min-height: 100vh;
         border-radius: 7px;
+        padding: 32px 40px 40px;
+        &>div{
+            &>h2 {
+                cursor: pointer;
+                text-decoration: none;
+                color: rgba(0, 0, 0, .9);
+                font-size: 17px;
+                font-weight: 500;
+                margin: 0 0 8px;
+    
+                &:hover {
+                    color: $blueStandar;
+                }
+            }
+            &>div {
+                -moz-column-count: 4;
+                column-count: 4;
+                -webkit-column-gap: 15px;
+                -moz-column-gap: 15px;
+                column-gap: 15px;
+    
+                margin: 0 auto;
+                padding-bottom: 40px;
+                padding-left: 0;
+                border-bottom: 1px solid #ededed;
+                margin-bottom: 40px;
+                a{
+                    color: rgba(0,0,0,.45);
+                    text-decoration: none;
+                    font-size: 13px;
+                    font-weight: 400;
+                    display: block;
+                    &:hover {
+                        color: $blueStandar;
+                    }
+                }
+            }
+        }
     }
 }

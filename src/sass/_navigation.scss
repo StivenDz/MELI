@@ -1,5 +1,5 @@
 // mobile nav 976px
-.navigation{
+.navigation {
     position: sticky;
     z-index: 999;
     top: 0;
@@ -9,165 +9,241 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @media screen and (max-width: 1193px){
-        &{
-            justify-content: space-between;
-            padding: 0 5px;
-        }
-    }
-    // padding:0 5vw 0;
-    //all sections have this style
-    & section{
+
+    // @media screen and (max-width: 1198px) {
+    //     & {
+    //         justify-content: space-between;
+    //         padding: 0 5px;
+    //     }
+    // }
+
+    &>div {
         display: flex;
-        flex-direction: column;
-    }
-    //first section - logo & country
-    & > section:nth-child(1){
-        & a > img{
-            height: 34px;
-            width: 134px;
-            margin-bottom: 6px;
-        }
-        & > section{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            & > svg{
-                font-size: 23px;
-            }
-            & > div{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin-left: 15px;
-                & > p:first-child{
-                    font-size: 12px;
-                    margin-bottom: -6px;
-                }
-                & > p:nth-child(2){
-                    font-size: 14px;
-                }
+        align-items: center;
+        justify-content: center;
+        max-width: 1220px;
+        width: 100%;
+        @media screen and (max-width: 1198px) {
+            & {
+                justify-content: space-between;
+                padding: 0 5px;
             }
         }
-    } 
-    //second section - searcher & links
-    & > section:nth-child(2){
-        margin: 0 50px 0;
-        width: 45vw;
-        @media screen and (max-width:1193px){
-            flex-grow: 2;
-        }
-        & > div:nth-child(1){
-            position: relative;
+
+        // padding:0 5vw 0;
+        //all sections have this style
+        & section {
             display: flex;
             flex-direction: column;
-            height: 50%;
-            margin-bottom: 20px;
-            & > input{
-                width: 100%;
-                border: none;
-                outline: none;
-                height: 37px;
-                border-radius: 2px;
-                box-shadow: 0 1px 2px 0 #00000033;
-                padding-left: 7px;
-                padding-top: 9px;
-            }
-            & hr{
-                position: absolute;
-                z-index: 20;
-                width: 20px;
-                background: rgb(48, 48, 48);
-                height: .5px;
-                border: none;
-                right: 30px;
-                top: 47%;
-                transform: translate(-50%) rotate(90deg);
-            }
-            & svg{
-                position: absolute;
-                z-index: 20;
-                right: 11px;
-                top: 28%;
-                transform: translate(-50%) rotate(90deg);
-                cursor: pointer;
-            }
         }
-        & > div:nth-child(2){
-            display: flex;
-            gap: 15px;
-            & > .dropDown{
+
+        //first section - logo & country
+        &>section:nth-child(1) {
+            & a>img {
+                height: 34px;
+                width: 134px;
+                margin-bottom: 6px;
+            }
+
+            &>section {
                 display: flex;
                 flex-direction: row;
-                gap: 5px;
                 align-items: center;
-                cursor: pointer;
-                .moreThanReverse{
-                    transform: rotate(90deg);
-                    color: rgba(109, 109, 109, 0.815);
+
+                &>svg {
+                    font-size: 23px;
                 }
-            }
-            &  a{
-                text-decoration: none;
-                font-size: 13px;
-                color: rgb(109, 109, 109);
-                @media screen and (max-width:1078px){
-                    font-size: 11px;
-                }
-                &:hover{
-                    color: rgb(0, 0, 0);
+
+                &>div {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-left: 15px;
+
+                    &>p:first-child {
+                        font-size: 12px;
+                        margin-bottom: -6px;
+                    }
+
+                    &>p:nth-child(2) {
+                        font-size: 14px;
+                    }
                 }
             }
         }
-    }
-    //hird section - adds & cart
-    & > section:last-child{
-        & > img{
-            width: 24vw;
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
-        & > div{
-            display: flex;
-            gap: 15px;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: 5px;
-            @media screen and (max-width: 1193px){
-                &{
-                    justify-content: space-between;
-                    padding: 0 15px 0 0;
-                }
-            }
-            & > a{
-                text-decoration: none;
-                font-size: 13px;
-                color: rgb(109, 109, 109);
-                @media screen and (max-width:1078px){
-                    font-size: 11px;
-                }
 
-                &:hover{
-                    color: rgb(0, 0, 0);
-                }
+        //second section - searcher & links
+        &>section:nth-child(2) {
+            margin: 0 50px 0;
+            width: 45vw;
+
+            // @media screen and (max-width:1193px) {
+            //     flex-grow: 2;
+            // }
+            @media screen and (max-width:1020px) {
+                margin: 0 0px 0;
             }
 
-            & > div {
+            &>div:nth-child(1) {
                 position: relative;
-                svg{
+                display: flex;
+                flex-direction: column;
+                height: 50%;
+                margin-bottom: 20px;
+
+                &>input {
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    height: 37px;
+                    border-radius: 2px;
+                    box-shadow: 0 1px 2px 0 #00000033;
+                    padding-left: 7px;
+                    padding-top: 9px;
+                }
+
+                & hr {
+                    position: absolute;
+                    z-index: 20;
+                    width: 20px;
+                    background: rgb(48, 48, 48);
+                    height: .5px;
+                    border: none;
+                    right: 30px;
+                    top: 47%;
+                    transform: translate(-50%) rotate(90deg);
+                }
+
+                & svg {
+                    position: absolute;
+                    z-index: 20;
+                    right: 11px;
+                    top: 28%;
+                    transform: translate(-50%) rotate(90deg);
                     cursor: pointer;
                 }
-                span{
-                    position: absolute;
-                    bottom: 10px;
-                    width: 26.6px;
-                    height: 27px;
-                    right: -17px;
-                    color: #ffffff;
-                    text-align: center;
-                    border-radius: 50%;
-                    background: #3483fa;
-                    z-index: -1;
+            }
+
+            &>div:nth-child(2) {
+                display: flex;
+                gap: 15px;
+
+                &>.dropDown {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 5px;
+                    align-items: center;
+                    cursor: pointer;
+
+                    .moreThanReverse {
+                        transform: rotate(90deg);
+                        color: rgba(109, 109, 109, 0.815);
+                    }
+                }
+
+                & a {
+                    text-decoration: none;
+                    font-size: 13px;
+                    color: rgb(109, 109, 109);
+
+                    @media screen and (max-width:1078px) {
+                        font-size: 11px;
+                    }
+                    &:nth-child(4){
+                        @media screen and (max-width:1198px) {
+                            display: none;
+                        }
+                    }
+                    &:hover {
+                        color: rgb(0, 0, 0);
+                    }
+                }
+            }
+        }
+
+        //hird section - adds & cart
+        &>section:last-child {
+            &>img {
+                width: 24vw;
+                margin-bottom: 20px;
+                cursor: pointer;
+                max-width: 340px;
+                max-height: 39px;
+            }
+
+            &>div {
+                position: relative;
+                display: flex;
+                gap: 15px;
+                justify-content: flex-end;
+                align-items: center;
+                flex-grow: 2;
+                margin-top: 5px;
+
+                @media screen and (max-width: 1193px) {
+                    & {
+                        justify-content: space-between;
+                        padding: 0 15px 0 0;
+                    }
+                }
+
+                &>svg {
+                    cursor: pointer;
+                }
+
+                &>a {
+                    text-decoration: none;
+                    font-size: 13px;
+                    color: rgb(109, 109, 109);
+
+                    @media screen and (max-width:1078px) {
+                        font-size: 11px;
+                    }
+
+                    &.userOptions {
+                        display: flex;
+                        align-items: center;
+
+                        &:hover {
+                            color: rgb(109, 109, 109);
+                        }
+                    }
+
+                    &:hover {
+                        color: rgb(0, 0, 0);
+                    }
+
+                    &>svg {
+                        transform: rotate(90deg);
+                        margin-left: 5px;
+
+                        &.userIcon {
+                            transform: rotate(0deg);
+                            margin-right: 5px;
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                &>div {
+                    position: relative;
+
+                    svg {
+                        cursor: pointer;
+                    }
+
+                    span {
+                        position: absolute;
+                        bottom: 10px;
+                        width: 26.6px;
+                        height: 27px;
+                        right: -17px;
+                        color: #ffffff;
+                        text-align: center;
+                        border-radius: 50%;
+                        background: #3483fa;
+                        z-index: -1;
+                    }
                 }
             }
         }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { generateCode } from '@hooks/useNumCodeGenerator'
-import { getSpecificUserByEmail,insertNewUser } from '@service/firebase';
+import { getSpecificUserByEmail, insertNewUser } from '@service/firebase';
 import { useCapitalize } from '@hooks/useCapitalize';
 
 import AppContext from '@context/AppContext';
@@ -20,7 +20,7 @@ const SignUp = () => {
     const form = React.useRef(null);
     const navigate = useNavigate();
     const { codehashed } = useParams();
-    const { state, isValidating, isSubmitted, errorInSignUp, addEmail, addUsername, addPhone, addPassword,Auth } = React.useContext(AppContext);
+    const { state, isValidating, isSubmitted, errorInSignUp, addEmail, addUsername, addPhone, addPassword, Auth } = React.useContext(AppContext);
     const [userData, setUserData] = React.useState({
         email: null,
         username: null,
@@ -135,9 +135,13 @@ const SignUp = () => {
         userData.password && addPassword(userData.password)
     }, [userData.password])
 
-    const createNewUser = () =>{
-        insertNewUser(userData);
-        Auth(true,userData);
+    const createNewUser = async () => {
+        await insertNewUser(userData);
+        await axios.post("http://localhost:9001/api/v1/welcome", {
+            email: userData.email,
+            name: userData.username.name
+        })
+        Auth(true,{ ...userData, id: localStorage.getItem("uid") },false,[],[]);
         navigate("/signup/registered=true/congrats")
     }
     return (
