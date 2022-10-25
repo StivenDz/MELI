@@ -40,7 +40,6 @@ const ProductDetail = () => {
                 setProductDetail(res.data);
                 setSelectedImage(res.data.pictures[0].secure_url);
                 document.title = `${res.data.title} | Mercado Libre`;
-                //console.log(res.data);
             })
             .catch(err => console.log('error productDetail API'));
     }, []);
@@ -54,6 +53,15 @@ const ProductDetail = () => {
                 })
                 .catch(err => console.log("error productDetail seller_id"));
     }, [productDetail]);
+
+    React.useEffect(()=>{
+            productDetail?.attributes.map(attr => {
+                console.log(attr.name,attr?.value_name);
+            })
+            // console.log(productDetail);
+            // axios.get(`https://api.mercadolibre.com/questions/search?item=${productId}&api_version=4`)
+            //     .then(res => console.log(res.data))
+    },[productDetail])
 
     React.useEffect(() => {
         setIsAddedToCartBtn((state.cart).filter(item => item.id === productId).length === 0 ? false : true);
@@ -124,21 +132,44 @@ const ProductDetail = () => {
             <main onClick={handleUnclickQuantity}>
                 {productDetail ?
                     <section className='productDetail'>
-                        <aside className="images">
-                            {productDetail.pictures.map((image, i) => (
-                                <div key={i}>
-                                    <img key={i} className={`image ${i == 0 ? 'selected' : ""}`} src={image.secure_url} alt="" onMouseOver={hoverImage} id={image.id} />
-                                </div>
-                            ))}
-                        </aside>
-                        <figure className='selectedImage'>
-                            <img src={selectedImage} alt="" />
-                        </figure>
-                        <section className='productDescription'>
-                            <p className='new'>{productDetail?.condition == 'new' && "Nuevo | "}{productDetail.sold_quantity + " vendidos"}</p>
-                            <h1>{productDetail.title}</h1>
-                            <ProductRating id={productId} />
-                            <span className='price'>$ {usePriceFormat(productDetail.price)}</span>
+                        <section>
+                            <div>
+                                <aside className="images">
+                                    {productDetail.pictures.map((image, i) => (
+                                        <div key={i}>
+                                            <img key={i} className={`image ${i == 0 ? 'selected' : ""}`} src={image.secure_url} alt="" onMouseOver={hoverImage} id={image.id} />
+                                        </div>
+                                    ))}
+                                </aside>
+                                <figure className='selectedImage'>
+                                    <img src={selectedImage} alt="" />
+                                </figure>
+                                <section className='productDescription'>
+                                    <p className='new'>{productDetail?.condition == 'new' && "Nuevo | "}{productDetail.sold_quantity + " vendidos"}</p>
+                                    <h1>{productDetail.title}</h1>
+                                    <ProductRating id={productId} />
+                                    <span className='price'>$ {usePriceFormat(productDetail.price)}</span>
+
+                                    <section className='moreDescription'>
+                                        <h4>Lo que tienes que saber de este producto</h4>
+                                        <ul>
+                                            {productDetail.attributes.map((attr,i)=>(
+                                                i <=6 &&
+                                                <li key={attr.id}>
+                                                    {attr.name} {attr.value_name}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Link to={"#"}>Ver características</Link>
+                                    </section>
+                                </section>
+                            </div>
+                            <span className='hr'></span>
+                            <section>
+                                <h2>Características de {(productDetail.attributes.filter(attr => (attr.id == "BRAND")))[0].value_name} {(productDetail.attributes.filter(attr => (attr.id == "MODEL")))[0].value_name}
+                                </h2>   
+                                {console.log(productDetail)}
+                            </section>
                         </section>
                         <article className='paymentMethod'>
                             <p>Hasta 48 cuotas</p>

@@ -2,8 +2,9 @@ import React from 'react';
 import Navigation from '@containers/Navigation';
 import NavigationResponsive from '@containers/NavigationResponsive';
 import {Carousel} from '@containers/Carousel';
-import ProductList from '@containers/ProductList';
 import PaymentMethodContainer from '@containers/PaymentMethodContainer';
+import OffersContainer from '../containers/OffersContainer';
+import ProductList from '@containers/ProductList';
 
 
 const Home =  () => {
@@ -18,6 +19,7 @@ const Home =  () => {
             <main>
                 <Carousel/>
                 <PaymentMethodContainer/>
+                {/* <OffersContainer/> */}
                 <ProductList/>
             </main>
         </>

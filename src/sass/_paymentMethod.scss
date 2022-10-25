@@ -1,63 +1,89 @@
-.paymentMethodContainer{
+.paymentMethodContainer {
     padding: 40px 5vw;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
-   
-    @media screen and (max-width:1186px){
+
+    @media screen and (max-width:1186px) {
         padding: 40px 1vw;
     }
-    @media screen and (max-width:578px){
+
+    @media screen and (max-width:578px) {
         flex-direction: column;
     }
-    
-    .paymentMehotdItem{
-        display: flex;
-        flex-grow: 1;
-        padding: 20px;
-        gap: 20px;
-        background: #fff;
-        @media screen and (max-width:851px){
-            justify-content: center
-        }
-        @media screen and (max-width:578px){
-            width: 95%;
-            justify-content: flex-start;
-            padding-left: 55px;
-        }
-        @media screen and (max-width:406px){
-            padding-left: 0px;
-        }
-        border-right: 1px solid rgba(53, 53, 53, 0.068);
-        &:nth-child(2){
-            flex-grow: 1.5;
-        }
-        &:nth-child(3){
-            @media screen and (max-width:1186px){
-                display: none;
-            }
-            @media screen and (max-width:578px){
-                display: flex;
-            }
-        }
-        &:nth-child(4){
-            @media screen and (max-width:851px){
-                display: none;
-            }
-        }
-        p{
-            font-size: 15px;
-        }
-        a{
-            font-size: 13px;
-            text-decoration: none;
-            color: $blueStandar;
 
-            &:hover{
-                color:$blueDark;
+    &>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        max-width: 1200px;
+        @media screen and (max-width:1186px) {
+            padding: 40px 1vw;
+        }
+
+        @media screen and (max-width:578px) {
+            flex-direction: column;
+        }
+
+        .paymentMehotdItem {
+            display: flex;
+            flex-grow: 1;
+            padding: 20px;
+            gap: 20px;
+            background: #fff;
+
+            @media screen and (max-width:851px) {
+                justify-content: center
+            }
+
+            @media screen and (max-width:578px) {
+                width: 95%;
+                justify-content: flex-start;
+                padding-left: 55px;
+            }
+
+            @media screen and (max-width:406px) {
+                padding-left: 0px;
+            }
+
+            border-right: 1px solid rgba(53, 53, 53, 0.068);
+
+            &:nth-child(2) {
+                flex-grow: 1.5;
+            }
+
+            &:nth-child(3) {
+                @media screen and (max-width:1186px) {
+                    display: none;
+                }
+
+                @media screen and (max-width:578px) {
+                    display: flex;
+                }
+            }
+
+            &:nth-child(4) {
+                @media screen and (max-width:851px) {
+                    display: none;
+                }
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            a {
+                font-size: 13px;
+                text-decoration: none;
+                color: $blueStandar;
+
+                &:hover {
+                    color: $blueDark;
+                }
             }
         }
     }
-    
+
 }

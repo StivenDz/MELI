@@ -27,11 +27,13 @@ const PaymentMethodContainer = () => {
 
     return ( 
         <section className='paymentMethodContainer'>
+            <div>
                 {methods.map((method,i) => (
                     <PaymentMethodItem
                         key={i} props={method}
                     />
                 ))}
+            </div>
         </section>
      );
 }
