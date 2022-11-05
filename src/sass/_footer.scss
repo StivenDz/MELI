@@ -1,0 +1,230 @@
+.FooterInfoContainer {
+    width: 100%;
+    padding-top: 40px;
+    background: #fff;
+    margin-top: 40px;
+
+    &>div {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        padding-bottom: 50px;
+        justify-content: space-evenly;
+        &>div {
+            padding: 35px 45px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            height: 270px;
+            width: 33.3333333333%;
+
+            img {
+                display: block;
+                margin-bottom: 15px;
+            }
+
+            h4 {
+                color: #4b4b4b;
+                font-size: 18px;
+                font-weight: 400;
+            }
+
+            p {
+                color: #999;
+                font-size: 13px;
+                text-align: center;
+            }
+
+            a {
+                text-decoration: none;
+                color: $blueStandar;
+                font-size: 13px;
+            }
+        }
+
+        &>div:nth-child(2)::before {
+            left: 0;
+            background-color: #e2e2e2;
+            content: "";
+            display: block;
+            height: 65px;
+            margin-top: -32.5px;
+            position: absolute;
+            top: 50%;
+            width: 1px;
+        }
+        &>div:nth-child(2)::after {
+            right: 0;
+            background-color: #e2e2e2;
+            content: "";
+            display: block;
+            height: 65px;
+            margin-top: -32.5px;
+            position: absolute;
+            top: 50%;
+            width: 1px;
+        }
+    }
+    &>figure{
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #e2e2e2;
+        position: relative;
+        a{
+            text-decoration: none;
+            display: flex;
+            gap: 7px;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            transform: translate(-50%);
+            z-index: 100;
+            background: #fff;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px 6px 0 0;
+            padding: 5px 8px;
+            border-bottom: none;
+            font-size: 13px;
+            color: #666;
+
+            svg{
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}
+
+.footer-Earth {
+    color: #000;
+    height: 150px;
+    width: 100%;
+    padding-bottom: 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background:linear-gradient(to bottom,#fff, #fff159);
+    // box-shadow: 0 7px 16px 0 #00000033, 0 1px 3px 0 #0000001a;
+
+    & p {
+        font-family: 'Poppins', sans-serif;
+        height: 15%;
+        font-weight: 500;
+    }
+
+    & .wrapper {
+        width: 100%;
+        // height: 85%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        & .iconsocial {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            position: relative;
+            border-radius: 50%;
+            padding: 15px;
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: box-shadow .5s, background-color .5s;
+            background: transparent;
+
+            & svg {
+                color: #000;
+                // transition: .4s linear;
+                font-size: 22px;
+            }
+
+            &:hover {
+                & .tooltip {
+                    top: -45px;
+                    opacity: 1;
+                    visibility: visible;
+                    pointer-events: auto;
+                    text-align: center;
+                }
+            }
+
+            &:hover:nth-child(1) {
+                background: rgb(255, 145, 0);
+                box-shadow: 0 7px 16px 0 #db493928, 0 1px 3px 0 #db493911;
+
+                & svg {
+                    color: #ffffff;
+                }
+            }
+
+            &:hover:nth-child(2) {
+                box-shadow: 0 7px 16px 0 #3483fa4f, 0 1px 3px 0 #3483fa1a;
+                background: #fff;
+
+                & svg {
+                    color: $blueStandar;
+                }
+            }
+
+            &:hover:nth-child(3) {
+                box-shadow: 0 7px 16px 0 rgba(177, 24, 111, 0.452), 0 1px 3px 0 rgba(193, 53, 132, 0.11);
+                background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #bc318f, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#bc318f, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+
+                & svg {
+                    color: rgb(255, 255, 255);
+                }
+            }
+
+            &:hover:nth-child(4) {
+                box-shadow: 0 7px 16px 0 #00000033, 0 1px 3px 0 #0000001a;
+                background: #000;
+
+                & svg {
+                    color: rgb(255, 255, 255);
+                }
+            }
+        }
+
+        & .tooltip {
+            font-family: 'Poppins', sans-serif;
+            position: absolute;
+            top: 0;
+            font-size: 14px;
+            color: #000;
+            padding: 5px 8px;
+            border-radius: 5px;
+            opacity: 0;
+            pointer-events: none;
+            background: #0000000c;
+            backdrop-filter: blur(1px);
+            transition: all 0.5s;
+        }
+
+        & a:nth-child(1) .tooltip {
+            box-shadow: 0 10px 10px #dd16162f;
+        }
+
+        & a:nth-child(2) .tooltip {
+            box-shadow: 0 10px 10px #3483fa31;
+        }
+
+        & a:nth-child(3) .tooltip {
+            box-shadow: 0 10px 10px #d9317a36;
+        }
+
+        & a:nth-child(4) .tooltip {
+            box-shadow: 0 10px 10px #00000036;
+        }
+    }
+}

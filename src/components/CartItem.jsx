@@ -23,7 +23,7 @@ const CartItem = ({item}) => {
                 icon="fa-solid fa-xmark"
                 onClick={() => removeFromCart(item)}
              />
-            <img src={(item.thumbnail).replace('I.jpg','F.jpg')} alt={item.title} title={item.title} id={item.id} />
+            <img src={((item.thumbnail).replace("http","https")).replace('I.jpg','F.jpg')} alt={item.title} title={item.title} id={item.id} />
             <div>
                 <h4>{item.title}</h4>
                 <p>{quantity.selected === 1 ? `${quantity.selected} Unidad` : `${quantity.selected} Unidades`}</p>

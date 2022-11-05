@@ -1,0 +1,128 @@
+.productCart {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 4px;
+    max-width: 224px;
+    cursor: pointer;
+    position: relative;
+    max-height: 330px;
+
+    &:hover {
+        max-height: none;
+        box-shadow: 0 7px 16px 0 #00000033, 0 1px 3px 0 #0000001a;
+
+        &>div {
+            display: grid;
+        }
+
+        &>a>section>h5 {
+            display: block;
+        }
+
+        &>a>section>.old_price {
+            display: block;
+        }
+    }
+
+    &>div {
+        position: absolute;
+        top: 15px !important;
+        right: 15px;
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+        place-items: center;
+        background-color: hsla(0, 0%, 100%, .7);
+        display: none;
+
+        .favorite {
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 1 !important;
+            color: $blueStandar;
+
+            &:hover {
+                color: $blueStandarHover;
+            }
+        }
+
+    }
+    & > a {
+        display: block;
+        text-decoration: none;
+        img {
+            height: 224px;
+            width: 224px;
+            object-fit: contain;
+            min-height: 224px;
+        }
+
+        &>section {
+            border-top: 1px solid rgba(51, 51, 51, .1);
+            padding: 20px 16px;
+            min-height: calc(330px - 224px);
+
+            &>span {
+                color: #333;
+                font-size: 22px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                &>p {
+                    color: #00a650;
+                    display: -webkit-flex;
+                    display: flex;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1;
+                }
+            }
+
+            .old_price {
+                text-decoration: line-through;
+                color: #999;
+                font-size: 13px;
+                display: none;
+            }
+
+            p {
+                color: #00a650;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 16px;
+                margin: 2px 0 0;
+            }
+
+            p.shipping {
+                font-weight: 600;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1;
+                color: #00a650;
+
+                &>span {
+                    margin-left: 5px;
+                    display: inline-flex;
+                    gap: 3px;
+                    font-size: 12px;
+                    font-weight: 800;
+                    font-style: italic;
+                }
+            }
+
+            h5 {
+                color: #666;
+                margin-top: 12px;
+                max-height: 2.6em;
+                overflow: hidden;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1.3;
+                display: none;
+            }
+        }
+    }
+
+}

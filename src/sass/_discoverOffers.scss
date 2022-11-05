@@ -1,0 +1,86 @@
+.discoverOffersContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+
+    &>div {
+        margin-bottom: 22px;
+        h2 {
+            font-size: 24px;
+            font-weight: 300;
+            margin: 0 0 0 8px;
+            color: #666;
+        }
+    }
+
+    &>section {
+        display: flex;
+        gap: 15px;
+
+        &>.discoverOfferItem {
+            width: 100%;
+            display: flex;
+            background: #fff;
+            gap: 16px;
+            border-radius: 6px;
+            box-shadow: 0 1px 1px 0 #0000001a;
+            overflow: hidden;
+            &:hover{
+                box-shadow: 0 7px 16px 0 #00000033, 0 1px 3px 0 #0000001a;
+            }
+
+            &>section {
+                flex-grow: 2;
+                padding: 32px 0 32px 32px;
+
+                span {
+                    font-size: 12px;
+                    letter-spacing: 4px;
+                    margin-bottom: 12px;
+                    display: block;
+                }
+
+                p {
+                    font-size: 24px;
+                    font-weight: 600;
+                    color: #4b4b4b;
+                    font-stretch: normal;
+                    font-style: normal;
+                    letter-spacing: normal;
+                    line-height: 1.1;
+                    text-transform: uppercase;
+                }
+
+                button {
+                    font-size: 14px;
+                    height: 36px;
+                    line-height: 1px;
+                    width: 96px;
+                    border: none;
+                    outline: none;
+                    color: #fff;
+                    background: $blueStandar;
+                    transition: background .5s;
+                    border-radius: 2px;
+                    margin-top: 13px;
+                    padding: 9px 10px;
+                    display: block;
+
+                    &:hover {
+                        background: $blueStandarHover;
+                    }
+                }
+            }
+
+            &>img {
+                height: 250px;
+                min-width: 290px;
+                object-fit: contain;
+                position: relative;
+                right: -25px;
+            }
+        }
+
+    }
+}

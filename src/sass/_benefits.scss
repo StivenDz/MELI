@@ -1,0 +1,95 @@
+.benefitsContainer {
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    margin:40px auto;
+
+    &>div {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 22px;
+
+        h2 {
+            font-size: 24px;
+            font-weight: 300;
+            margin: 0 0 0 8px;
+            color: #666;
+        }
+
+        a {
+            text-decoration: none;
+            color: $blueStandar;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+    }
+
+    &>section {
+        display: flex;
+        justify-content: stretch;
+        gap: 16px;
+
+        &>div {
+            height: 250px;
+            border-radius: 6px;
+            flex: 1;
+            position: relative;
+            cursor: pointer;
+
+            &>img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
+                border-radius: 6px;
+            }
+
+            &>section {
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                gap: 16px;
+                color: #fff;
+                padding: 16px;
+                z-index: 50;
+                align-items: center;
+
+                &>img {
+                    border-radius: 6px;
+                    display: flex;
+                    width: 80px;
+                    object-fit: cover;
+                    overflow: hidden;
+                    display: block;
+                }
+                
+                &>div {
+                    span {
+                        display: block;
+
+                        &.freeDays {
+                            font-size: 10px;
+                            font-weight: 500;
+                            line-height: 1.33;
+                            margin-bottom: 4px;
+                        }
+
+                        &.benefitsText {
+                            font-size: 20px;
+                            font-weight: 600;
+                            line-height: 1.09;
+                        }
+
+                        &:last-of-type {
+                            font-size: 17px;
+                            letter-spacing: .4px;
+                            line-height: 1.11;
+                            margin-top: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

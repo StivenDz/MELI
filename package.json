@@ -48,6 +48,7 @@
     "webpack-dev-server": "^4.10.0"
   },
   "devDependencies": {
+    "@types/react": "^18.0.25",
     "css-loader": "^6.7.1",
     "mini-css-extract-plugin": "^2.6.1",
     "node-sass": "^7.0.1",

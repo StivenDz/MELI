@@ -31,10 +31,10 @@ const Categories = () => {
             });
     }, [categories])
 
-    React.useEffect(()=>{
-        childrenCategories.full && console.log(childrenCategories);
-        childrenCategories.full && console.log(categories);
-    },[childrenCategories])
+    // React.useEffect(()=>{
+    //     childrenCategories.full && console.log(childrenCategories);
+    //     childrenCategories.full && console.log(categories);
+    // },[childrenCategories])
 
     return (
         <>

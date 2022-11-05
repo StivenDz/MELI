@@ -16,7 +16,7 @@ const CartPageItem = ({product}) => {
     return (
         <section className='product' id={product.id}>
             <Link to={productUrl}>
-                <img src={product.thumbnail} title={product.title} alt={product.title} />
+                <img src={(product.thumbnail).replace("http","https")} title={product.title} alt={product.title} />
             </Link>
             <div className='titleAndOptions'>
                 <Link to={productUrl}>

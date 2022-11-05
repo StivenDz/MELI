@@ -49,19 +49,21 @@ const ProductDetail = () => {
             axios.get(`${process.env.BASE_URL_COLSITE}/search?seller_id=${productDetail.seller_id}`)
                 .then(res => {
                     setSeller(res.data);
-                    //console.log(res.data);
                 })
                 .catch(err => console.log("error productDetail seller_id"));
     }, [productDetail]);
 
+    // see attrubites test
     React.useEffect(()=>{
             productDetail?.attributes.map(attr => {
                 console.log(attr.name,attr?.value_name);
             })
-            // console.log(productDetail);
-            // axios.get(`https://api.mercadolibre.com/questions/search?item=${productId}&api_version=4`)
-            //     .then(res => console.log(res.data))
     },[productDetail])
+
+    React.useEffect(()=>{
+        axios.get(`https://api.mercadolibre.com/categories/${categoryId}`)
+            .then(res => console.log(res.data))
+    })
 
     React.useEffect(() => {
         setIsAddedToCartBtn((state.cart).filter(item => item.id === productId).length === 0 ? false : true);
@@ -168,7 +170,7 @@ const ProductDetail = () => {
                             <section>
                                 <h2>Características de {(productDetail.attributes.filter(attr => (attr.id == "BRAND")))[0].value_name} {(productDetail.attributes.filter(attr => (attr.id == "MODEL")))[0].value_name}
                                 </h2>   
-                                {console.log(productDetail)}
+                                {/* {console.log(productDetail)} */}
                             </section>
                         </section>
                         <article className='paymentMethod'>

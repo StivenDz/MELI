@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const images = [
     "https://http2.mlstatic.com/D_NQ_942388-MLA51264145748_082022-OO.webp",
     "https://http2.mlstatic.com/D_NQ_635824-MLA51168764523_082022-OO.webp",
+    "https://http2.mlstatic.com/D_NQ_684284-MLA52163010407_102022-OO.webp",
     "https://http2.mlstatic.com/D_NQ_923401-MLA51168908741_082022-OO.webp",
     "https://http2.mlstatic.com/D_NQ_925605-MLA51183881425_082022-OO.webp",
-    "https://http2.mlstatic.com/D_NQ_866834-MLA51169135176_082022-OO.webp"
+    "https://http2.mlstatic.com/D_NQ_866834-MLA51169135176_082022-OO.webp",
+    "https://http2.mlstatic.com/D_NQ_634315-MLA52253720027_112022-OO.webp"
 ];
 const variants = {
     enter: (direction) => {

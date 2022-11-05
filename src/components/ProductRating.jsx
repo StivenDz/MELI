@@ -6,13 +6,12 @@ const ProductRating = ({id}) => {
     const [rating,setRating] = React.useState(null);
     const API = `${process.env.BASE_URL}/reviews/item/${id}`;
     React.useEffect(()=>{
-        axios.get(API)
-            .then(res => {
-                setRating(res.data);
-            })
-            .catch(err => console.log('error productRating'))
+            axios.get(API)
+                .then(res => {
+                    setRating(res.data);
+                })
+                .catch(err => console.log('error productRatingComponent'))
     },[]);
-
     return (
         <section className='ratingContainer'>
             <div className='stars'>

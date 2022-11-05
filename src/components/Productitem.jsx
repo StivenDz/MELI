@@ -7,14 +7,13 @@ import { motion } from 'framer-motion';
 import { usePriceFormat } from '@hooks/usePriceFormat';
 import ProductRating from '@components/ProductRating';
 
-const ProductItem = ({ props,category }) => {
+const ProductItem = ({ props, category }) => {
     const { state, addToCart, removeFromCart } = React.useContext(AppContext);
     const [isFavorite, setIsFavorite] = React.useState("fa-regular fa-heart");
     const [isAddedToCart, setIsAddedToCart] = React.useState(
         (state.cart).filter(item => item.id === props.id).length === 0 ? false : true
         // localStorage.getItem('cart') ? (JSON.stringify(state.cart)).includes(JSON.stringify(props)) : false
     );
-
     const isFavoriteFunction = () => {
         (isFavorite == "fa-regular fa-heart") ?
             setIsFavorite("fa-solid fa-heart")
@@ -35,9 +34,9 @@ const ProductItem = ({ props,category }) => {
             )
     }
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         setIsAddedToCart((state.cart).filter(item => item.id === props.id).length === 0 ? false : true);
-    },[state.cart])
+    }, [state.cart])
 
     const productUrl = `/product=${(props.title).replace(/[^a-zA-Z0-9 ]/g, "")}/aq=${props.available_quantity}/c=${category}/${props.id}`;
 
@@ -50,7 +49,7 @@ const ProductItem = ({ props,category }) => {
                 onClick={() => isFavoriteFunction()}
             />
             <Link to={productUrl}>
-                <motion.img src={(props.thumbnail).replace('I.jpg', 'F.jpg')} title={props.title} alt={props.title} />
+                <motion.img src={((props.thumbnail).replace("http", "https")).replace('I.jpg', 'F.jpg')} title={props.title} alt={props.title} />
             </Link>
             <motion.div className='content'>
                 <Link to={productUrl}>
@@ -67,8 +66,8 @@ const ProductItem = ({ props,category }) => {
                     </span>
                     {props?.shipping.free_shipping &&
                         <p className='shipping'>Envío gratis
-                        {props.shipping.logistic_type === "fulfillment" && <span><FontAwesomeIcon icon="fa-solid fa-bolt"/>FULL</span>}
-                    </p>}
+                            {props.shipping.logistic_type === "fulfillment" && <span><FontAwesomeIcon icon="fa-solid fa-bolt" />FULL</span>}
+                        </p>}
                 </Link>
                 {/* {isAddedToCart ?
 
