@@ -7,7 +7,8 @@ import axios from 'axios';
 
 const Categories = () => {
     window.scrollTo({
-        top: 0
+        top:"0",
+        behavior:"smooth"
     })
 
     let response = [];

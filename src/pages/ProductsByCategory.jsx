@@ -7,6 +7,10 @@ import { useParams } from 'react-router';
 const ProductsByCategory = () => {
     let {categoryId,categoryName} = useParams();
     document.title = categoryName + " | Mercado Libre";
+    window.scrollTo({
+        top:"0",
+        behavior:"smooth"
+    })
     return ( 
         <>
             {window.innerWidth > 976 ?

@@ -2525,165 +2525,387 @@ body {
       height: 1px;
       width: 90%;
       margin: 40px auto; }
-    .productDetail > section > section {
+    .productDetail > section > section.productsSuggestions {
+      padding: 0px 65px; }
+      .productDetail > section > section.productsSuggestions > .carouselProductList > div > div a {
+        display: none; }
+      .productDetail > section > section.productsSuggestions > .carouselProductList > div > section > section {
+        padding-left: 10px; }
+      .productDetail > section > section.productsSuggestions .productCart > a > section > h5 {
+        display: block; }
+      .productDetail > section > section.productsSuggestions .productCart {
+        border: 1px solid #f5f5f5;
+        box-shadow: 0 1px 1px 0 #0000001a;
+        max-height: none; }
+        .productDetail > section > section.productsSuggestions .productCart:hover {
+          box-shadow: 0 7px 11px 0 #0000001a; }
+    .productDetail > section > section.caracteristicsContainer {
       padding: 0 45px; }
-      .productDetail > section > section h2 {
+      .productDetail > section > section.caracteristicsContainer > h2 {
         color: rgba(0, 0, 0, 0.9);
         font-size: 24px;
         font-weight: 400; }
-  .productDetail .paymentMethod {
-    margin-top: 16px;
-    width: 24%;
-    flex-grow: 1;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 25px 16px;
-    min-width: 309px; }
-    .productDetail .paymentMethod > .methods {
-      display: flex;
-      gap: 5px;
-      margin-top: 5px; }
-      .productDetail .paymentMethod > .methods > div:nth-child(1) {
-        width: 62px;
-        height: 20px;
-        background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
-        background-position: left -152px; }
-      .productDetail .paymentMethod > .methods > div:nth-child(2) {
-        width: 22px;
-        height: 19px;
-        background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
-        background-position: left -61px; }
-      .productDetail .paymentMethod > .methods > div:nth-child(3) {
-        width: 29px;
-        height: 24px;
-        background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
-        background-position: left -82px; }
-    .productDetail .paymentMethod > .infomation {
-      text-decoration: none;
-      color: #3483fa;
-      font-size: 13px; }
-    .productDetail .paymentMethod .sellerBy {
-      font-size: 14px;
-      margin-top: 12px; }
-      .productDetail .paymentMethod .sellerBy > .seller {
+      .productDetail > section > section.caracteristicsContainer > .caracteristics {
+        margin-top: 32px;
+        display: flex;
+        gap: 40px; }
+        .productDetail > section > section.caracteristicsContainer > .caracteristics > div {
+          display: flex;
+          flex-direction: column;
+          gap: 24px; }
+          .productDetail > section > section.caracteristicsContainer > .caracteristics > div > div {
+            display: flex;
+            gap: 16px;
+            align-items: center; }
+            .productDetail > section > section.caracteristicsContainer > .caracteristics > div > div > figure {
+              border-radius: 50%;
+              height: 32px;
+              max-height: 32px;
+              max-width: 32px;
+              min-height: 32px;
+              min-width: 32px;
+              width: 32px;
+              background-color: rgba(0, 0, 0, 0.04);
+              display: block; }
+            .productDetail > section > section.caracteristicsContainer > .caracteristics > div > div p {
+              font-weight: 400;
+              font-size: 12.5px;
+              color: rgba(0, 0, 0, 0.9); }
+              .productDetail > section > section.caracteristicsContainer > .caracteristics > div > div p > span {
+                font-weight: 600; }
+      .productDetail > section > section.caracteristicsContainer > a {
         text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 4px;
         color: #3483fa;
-        font-size: 15px; }
-    .productDetail .paymentMethod > .sold {
-      font-size: 15px; }
-    .productDetail .paymentMethod > .shipments {
-      display: flex;
-      padding-top: 15px;
-      gap: 5px; }
-      .productDetail .paymentMethod > .shipments > svg {
-        color: #00a650;
-        margin-top: 4px; }
-      .productDetail .paymentMethod > .shipments > div p:nth-child(1) {
-        color: #00a650;
-        margin-bottom: 2px;
-        font-weight: 400; }
-      .productDetail .paymentMethod > .shipments > div p:nth-child(2) {
-        font-size: 13.5px;
-        color: rgba(0, 0, 0, 0.55); }
-      .productDetail .paymentMethod > .shipments > div > a {
+        font-size: 13px;
+        font-weight: 400;
+        padding: 8px 0px;
+        margin-top: 24px; }
+    .productDetail > section > section.description {
+      padding: 0 45px 40px;
+      margin-bottom: 24px; }
+      .productDetail > section > section.description > h2 {
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 24px; }
+      .productDetail > section > section.description > p {
+        color: #666;
+        font-size: 18px;
+        font-weight: 400;
+        word-break: break-word; }
+  .productDetail > aside {
+    width: 24%;
+    min-width: 309px;
+    flex-grow: 1; }
+    .productDetail > aside .paymentMethod {
+      margin-top: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 25px 16px; }
+      .productDetail > aside .paymentMethod > .methods {
+        display: flex;
+        gap: 5px;
+        margin-top: 5px; }
+        .productDetail > aside .paymentMethod > .methods > div:nth-child(1) {
+          width: 62px;
+          height: 20px;
+          background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+          background-position: left -152px; }
+        .productDetail > aside .paymentMethod > .methods > div:nth-child(2) {
+          width: 22px;
+          height: 19px;
+          background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+          background-position: left -61px; }
+        .productDetail > aside .paymentMethod > .methods > div:nth-child(3) {
+          width: 29px;
+          height: 24px;
+          background: url(https://http2.mlstatic.com/secure/payment-logos/v2/payment-logos-mco-small_v_3866024fb1.png) no-repeat;
+          background-position: left -82px; }
+      .productDetail > aside .paymentMethod > .infomation {
         text-decoration: none;
         color: #3483fa;
         font-size: 13px; }
-        .productDetail .paymentMethod > .shipments > div > a svg {
-          margin-right: 5px; }
-    .productDetail .paymentMethod > .available, .productDetail .paymentMethod > .quantity-container .quantity.paymentMethod > h4 {
-      margin-top: 25px;
-      font-size: 16px;
-      font-weight: 500; }
-    .productDetail .paymentMethod > .quantity-container {
-      margin-top: 25px;
-      display: flex;
-      justify-content: space-between;
-      gap: 7px; }
-      .productDetail .paymentMethod > .quantity-container .quantity {
+      .productDetail > aside .paymentMethod .sellerBy {
+        font-size: 14px;
+        margin-top: 12px; }
+        .productDetail > aside .paymentMethod .sellerBy > .seller {
+          text-decoration: none;
+          color: #3483fa;
+          font-size: 15px; }
+      .productDetail > aside .paymentMethod > .sold {
+        font-size: 15px; }
+      .productDetail > aside .paymentMethod > .shipments {
         display: flex;
-        cursor: pointer;
-        align-items: center;
-        position: relative;
-        overflow: visible; }
-        .productDetail .paymentMethod > .quantity-container .quantity .quantities {
-          position: absolute;
-          z-index: 100;
+        padding-top: 15px;
+        gap: 5px; }
+        .productDetail > aside .paymentMethod > .shipments > svg {
+          color: #00a650;
+          margin-top: 4px; }
+        .productDetail > aside .paymentMethod > .shipments > div p:nth-child(1) {
+          color: #00a650;
+          margin-bottom: 2px;
+          font-weight: 400; }
+        .productDetail > aside .paymentMethod > .shipments > div p:nth-child(2) {
+          font-size: 13.5px;
+          color: rgba(0, 0, 0, 0.55); }
+        .productDetail > aside .paymentMethod > .shipments > div > a {
+          text-decoration: none;
+          color: #3483fa;
+          font-size: 13px; }
+          .productDetail > aside .paymentMethod > .shipments > div > a svg {
+            margin-right: 5px; }
+      .productDetail > aside .paymentMethod > .available, .productDetail > aside .paymentMethod > .quantity-container .quantity.paymentMethod > h4 {
+        margin-top: 25px;
+        font-size: 16px;
+        font-weight: 500; }
+      .productDetail > aside .paymentMethod > .quantity-container {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        gap: 7px; }
+        .productDetail > aside .paymentMethod > .quantity-container .quantity {
+          display: flex;
+          cursor: pointer;
+          align-items: center;
+          position: relative;
+          overflow: visible; }
+          .productDetail > aside .paymentMethod > .quantity-container .quantity .quantities {
+            position: absolute;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            top: 150%;
+            width: 200px;
+            background: #fff;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            background-color: #fff;
+            font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+            box-shadow: 0 8px 16px 0 #0000001a, 0 0 6px 0 #0000001a; }
+            .productDetail > aside .paymentMethod > .quantity-container .quantity .quantities > div {
+              height: 48px;
+              display: flex;
+              align-items: center;
+              padding: 8px; }
+              .productDetail > aside .paymentMethod > .quantity-container .quantity .quantities > div:hover {
+                background-color: rgba(0, 0, 0, 0.04); }
+            .productDetail > aside .paymentMethod > .quantity-container .quantity .quantities > .quantitySelected {
+              color: #3483fa;
+              border-left: 2px solid #3483fa; }
+          .productDetail > aside .paymentMethod > .quantity-container .quantity > h4 {
+            font-weight: 400; }
+          .productDetail > aside .paymentMethod > .quantity-container .quantity > p {
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap; }
+          .productDetail > aside .paymentMethod > .quantity-container .quantity > svg {
+            margin-left: 3px;
+            color: #3483fa;
+            transition: transform .5s; }
+          .productDetail > aside .paymentMethod > .quantity-container .quantity > .rotate {
+            transform: rotate(180deg); }
+        .productDetail > aside .paymentMethod > .quantity-container > p {
+          color: rgba(0, 0, 0, 0.55);
+          font-size: 12px;
+          font-weight: 400;
+          flex-grow: 2; }
+      .productDetail > aside .paymentMethod > .buyNowButton, .productDetail > aside .paymentMethod > .addToCartButton, .productDetail > aside .paymentMethod > .deleteFromCartButton {
+        margin-top: 25px;
+        -webkit-font-smoothing: antialiased;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        border: none;
+        outline: none;
+        display: inline-block;
+        font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        height: 48px;
+        line-height: 48px;
+        padding: 0 24px;
+        text-align: center;
+        width: 100%;
+        color: #fff;
+        background: #3483fa;
+        transition: background .5s; }
+        .productDetail > aside .paymentMethod > .buyNowButton:hover, .productDetail > aside .paymentMethod > .addToCartButton:hover, .productDetail > aside .paymentMethod > .deleteFromCartButton:hover {
+          background: #1668e4; }
+      .productDetail > aside .paymentMethod > .addToCartButton, .productDetail > aside .paymentMethod > .deleteFromCartButton {
+        margin-top: 10px;
+        background: rgba(65, 137, 230, 0.15);
+        color: #3483fa; }
+        .productDetail > aside .paymentMethod > .addToCartButton:hover, .productDetail > aside .paymentMethod > .deleteFromCartButton:hover {
+          background: rgba(65, 137, 230, 0.253); }
+      .productDetail > aside .paymentMethod > .deleteFromCartButton {
+        background: rgba(230, 65, 65, 0.15);
+        color: #c31212; }
+        .productDetail > aside .paymentMethod > .deleteFromCartButton:hover {
+          background: rgba(230, 65, 65, 0.253); }
+      .productDetail > aside .paymentMethod > .benefits {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px; }
+        .productDetail > aside .paymentMethod > .benefits > div {
+          display: flex;
+          gap: 10px; }
+          .productDetail > aside .paymentMethod > .benefits > div svg {
+            height: 16px;
+            width: 16px;
+            color: rgba(0, 0, 0, 0.55); }
+          .productDetail > aside .paymentMethod > .benefits > div p {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 2px;
+            color: rgba(0, 0, 0, 0.55); }
+            .productDetail > aside .paymentMethod > .benefits > div p a {
+              text-decoration: none;
+              color: #3483fa; }
+    .productDetail > aside .sellerInformation {
+      margin-top: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 25px 16px; }
+      .productDetail > aside .sellerInformation > h3 {
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 28px;
+        width: 100%; }
+      .productDetail > aside .sellerInformation > div {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px; }
+        .productDetail > aside .sellerInformation > div.leader > svg {
+          margin-top: 5px;
+          color: #00a650; }
+        .productDetail > aside .sellerInformation > div.leader > p {
           display: flex;
           flex-direction: column;
-          top: 150%;
-          width: 200px;
-          background: #fff;
-          font-size: 18px;
-          -webkit-font-smoothing: antialiased;
-          background-color: #fff;
-          font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 1;
-          margin: 0;
-          padding: 0;
-          box-shadow: 0 8px 16px 0 #0000001a, 0 0 6px 0 #0000001a; }
-          .productDetail .paymentMethod > .quantity-container .quantity .quantities > div {
-            height: 48px;
-            display: flex;
-            align-items: center;
-            padding: 8px; }
-            .productDetail .paymentMethod > .quantity-container .quantity .quantities > div:hover {
-              background-color: rgba(0, 0, 0, 0.04); }
-          .productDetail .paymentMethod > .quantity-container .quantity .quantities > .quantitySelected {
-            color: #3483fa;
-            border-left: 2px solid #3483fa; }
-        .productDetail .paymentMethod > .quantity-container .quantity > h4 {
-          font-weight: 400; }
-        .productDetail .paymentMethod > .quantity-container .quantity > p {
-          margin-left: 10px;
           font-size: 14px;
-          font-weight: 500;
-          white-space: nowrap; }
-        .productDetail .paymentMethod > .quantity-container .quantity > svg {
-          margin-left: 3px;
-          color: #3483fa;
-          transition: transform .5s; }
-        .productDetail .paymentMethod > .quantity-container .quantity > .rotate {
-          transform: rotate(180deg); }
-      .productDetail .paymentMethod > .quantity-container > p {
-        color: rgba(0, 0, 0, 0.55);
-        font-size: 12px;
+          font-weight: 400;
+          color: #00a650; }
+          .productDetail > aside .sellerInformation > div.leader > p > span {
+            color: rgba(0, 0, 0, 0.55);
+            font-size: 12.5px; }
+        .productDetail > aside .sellerInformation > div > svg {
+          margin-top: 5px;
+          color: rgba(0, 0, 0, 0.55); }
+        .productDetail > aside .sellerInformation > div > p {
+          display: flex;
+          flex-direction: column;
+          font-size: 14px;
+          font-weight: 400; }
+          .productDetail > aside .sellerInformation > div > p > span {
+            color: rgba(0, 0, 0, 0.55);
+            font-size: 12.5px; }
+      .productDetail > aside .sellerInformation > ul {
+        list-style: none;
+        display: flex;
+        width: 100%;
+        align-items: center; }
+        .productDetail > aside .sellerInformation > ul > li {
+          background: #fff0f0;
+          border-left: 6px solid #fff;
+          height: 8px;
+          margin-top: 2px;
+          width: 20%; }
+          .productDetail > aside .sellerInformation > ul > li:nth-child(2) {
+            background: #fff5e8; }
+          .productDetail > aside .sellerInformation > ul > li:nth-child(3) {
+            background: #fffcda; }
+          .productDetail > aside .sellerInformation > ul > li:nth-child(4) {
+            background: #f1fdd7; }
+          .productDetail > aside .sellerInformation > ul > li:nth-child(5) {
+            background: #39b54a;
+            height: 12px; }
+      .productDetail > aside .sellerInformation > .sellerStatus {
+        display: flex;
+        margin-top: 16px; }
+        .productDetail > aside .sellerInformation > .sellerStatus > div {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          align-items: center;
+          height: 73px; }
+          .productDetail > aside .sellerInformation > .sellerStatus > div:nth-child(2) {
+            border-right: 1px solid #ddd;
+            border-left: 1px solid #ddd; }
+          .productDetail > aside .sellerInformation > .sellerStatus > div > span {
+            color: #000;
+            display: block;
+            font-size: 18px;
+            font-weight: 400; }
+          .productDetail > aside .sellerInformation > .sellerStatus > div > svg {
+            min-height: 24px;
+            width: 28px; }
+          .productDetail > aside .sellerInformation > .sellerStatus > div > p {
+            font-size: 10px;
+            color: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            padding: 0 5px; }
+      .productDetail > aside .sellerInformation > a {
+        margin-top: 24px;
+        color: #3483fa;
+        text-decoration: none;
+        font-size: 13px;
         font-weight: 400;
-        flex-grow: 2; }
-    .productDetail .paymentMethod > .buyNowButton, .productDetail .paymentMethod > .addToCartButton, .productDetail .paymentMethod > .deleteFromCartButton {
-      margin-top: 25px;
-      -webkit-font-smoothing: antialiased;
-      -webkit-border-radius: 6px;
-      border-radius: 6px;
-      border: none;
-      outline: none;
-      display: inline-block;
-      font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      height: 48px;
-      line-height: 48px;
-      padding: 0 24px;
-      text-align: center;
-      width: 100%;
-      color: #fff;
-      background: #3483fa;
-      transition: background .5s; }
-      .productDetail .paymentMethod > .buyNowButton:hover, .productDetail .paymentMethod > .addToCartButton:hover, .productDetail .paymentMethod > .deleteFromCartButton:hover {
-        background: #1668e4; }
-    .productDetail .paymentMethod > .addToCartButton, .productDetail .paymentMethod > .deleteFromCartButton {
-      margin-top: 10px;
-      background: rgba(65, 137, 230, 0.15);
-      color: #3483fa; }
-      .productDetail .paymentMethod > .addToCartButton:hover, .productDetail .paymentMethod > .deleteFromCartButton:hover {
-        background: rgba(65, 137, 230, 0.253); }
-    .productDetail .paymentMethod > .deleteFromCartButton {
-      background: rgba(230, 65, 65, 0.15);
-      color: #c31212; }
-      .productDetail .paymentMethod > .deleteFromCartButton:hover {
-        background: rgba(230, 65, 65, 0.253); }
+        display: block; }
+        .productDetail > aside .sellerInformation > a:hover {
+          color: #1668e4; }
+    .productDetail > aside .paymentMethod2 {
+      margin-top: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 25px 16px; }
+      .productDetail > aside .paymentMethod2 > h3 {
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 28px;
+        width: 100%; }
+      .productDetail > aside .paymentMethod2 > div:nth-child(3) {
+        margin-top: 24px; }
+      .productDetail > aside .paymentMethod2 > div:nth-child(4) {
+        margin-top: 24px; }
+      .productDetail > aside .paymentMethod2 > div > p {
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 12px; }
+      .productDetail > aside .paymentMethod2 > div > span {
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 18px;
+        margin-top: 8px; }
+      .productDetail > aside .paymentMethod2 > div > figure {
+        height: 46px;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin-top: 4px; }
+        .productDetail > aside .paymentMethod2 > div > figure > svg {
+          height: 32px; }
+      .productDetail > aside .paymentMethod2 > a {
+        font-size: 13px;
+        font-weight: 400;
+        margin-top: 24px;
+        text-decoration: none;
+        color: #3483fa;
+        display: block; }
+        .productDetail > aside .paymentMethod2 > a:hover {
+          color: #1668e4; }
 
 .cartPage {
   margin: 0 auto;

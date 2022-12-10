@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
-const CarouselProductList = ({ title, category = "MCO1648" }) => {
+const CarouselProductList = ({ title, category = "MCO1648",quantityScroll = 5 }) => {
     const [showRLButtons, setShowRLButtons] = React.useState(false);
     const [products,setProducts] = React.useState(null);
 
@@ -48,10 +48,10 @@ const CarouselProductList = ({ title, category = "MCO1648" }) => {
                 <figure>
                     {showRLButtons && (
                         <>
-                            <div className="next" onClick={() => paginate(240 * 5)}>
+                            <div className="next" onClick={() => paginate(240 * quantityScroll)}>
                                 <FontAwesomeIcon icon="fa-solid fa-angle-right" />
                             </div>
-                            <div className="prev" onClick={() => paginate(-240 * 5)}>
+                            <div className="prev" onClick={() => paginate(-240 * quantityScroll)}>
                                 <FontAwesomeIcon icon="fa-solid fa-angle-right" />
                             </div>
                         </>
